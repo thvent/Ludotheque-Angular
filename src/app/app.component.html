@@ -1,5 +1,7 @@
 <ul>
-  <li><a routerLink="login">Login</a></li>
+  <li *ngIf="authService.isLoggedOut$ | async"><a [routerLink]="['/login']">Login</a></li>
+  <li *ngIf="authService.isLoggedIn$ | async"><a [routerLink]="['/users']">Users</a></li>
+  <li *ngIf="authService.isLoggedIn$ | async"><button (click)="logout()">logout</button></li>
 </ul>
 <router-outlet></router-outlet>
 

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import * as moment from 'moment';
 import {MessageService} from 'primeng/api';
+import {AuthentificationService} from './_services/authentification.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ import {MessageService} from 'primeng/api';
 export class AppComponent {
   title = 'ludotheque-client';
 
-constructor(public messageService: MessageService) {
+constructor(public messageService: MessageService, public authService: AuthentificationService) {
 }
 
   show(): void {
@@ -20,5 +21,9 @@ constructor(public messageService: MessageService) {
       severity: 'info',
       detail: `${this.title}, ${now}`,
     });
+  }
+
+  logout(): void {
+    this.authService.logout();
   }
 }

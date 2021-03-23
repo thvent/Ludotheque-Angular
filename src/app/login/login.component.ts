@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthentificationService} from '../_services/authentification.service';
 import {first} from 'rxjs/operators';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-login',
@@ -19,14 +20,22 @@ export class LoginComponent implements OnInit {
   error = '';
 
   formulaire = new FormGroup({
-    email: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required])
+    email: new FormControl('robert.duchmol@domain.fr', [Validators.required]),
+    password: new FormControl('secret', [Validators.required])
   });
 
-  constructor(private authService: AuthentificationService, private router: Router) {
+  constructor(private messageService: MessageService, private authService: AuthentificationService, private router: Router,
+              private route: ActivatedRoute) {
+/*
+    if (this.authService.userValue) {
+      this.router.navigate(['/']);
+    }
+*/
   }
 
   ngOnInit(): void {
+    // get return url from route parameters or default to '/'
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   get email(): AbstractControl {
@@ -42,33 +51,36 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     this.authService.login(this.form.email, this.form.password)
       .pipe(first())
-      .subscribe({
-        next: () => {
+      .subscribe(
+        () => {
           this.router.navigate([this.returnUrl]);
+          this.messageService.add({severity: 'info', summary: 'Connexion', detail: `Bienvenue, ${this.authService.userValue.name}`, key: 'main'});
         },
-        error: error => {
-          this.error = error;
+        error => {
+          console.log('Erreur: ', error);
+          // this.error = error.error.data.values[0];
           this.loading = false;
+          this.messageService.add({severity: 'error', summary: 'Erreur', detail: this.error, key: 'main'});
         }
-      });
+      );
 
-/*
-    this.authService.login(this.email.value, this.password.value).subscribe(
-      data => {
-        this.tokenStorage.saveToken(data.access_token);
-        this.tokenStorage.saveUser(data.user);
+    /*
+        this.authService.login(this.email.value, this.password.value).subscribe(
+          data => {
+            this.tokenStorage.saveToken(data.access_token);
+            this.tokenStorage.saveUser(data.user$);
 
-        this.roles = this.tokenStorage.getUser().roles;
-        this.router.navigate(['/']);
-      },
-      err => {
-        this.formulaire.reset();
-        this.formulaire.patchValue({email: this.form.email});
-        this.tokenStorage.signOut();
-        this.messageService.add({severity: 'error', summary: 'Erreur', detail: err.error.data.values[0], key: 'main'});
-      }
-    );
-*/
+            this.roles = this.tokenStorage.getUser().roles;
+            this.router.navigate(['/']);
+          },
+          err => {
+            this.formulaire.reset();
+            this.formulaire.patchValue({email: this.form.email});
+            this.tokenStorage.signOut();
+            this.messageService.add({severity: 'error', summary: 'Erreur', detail: err.error.data.values[0], key: 'main'});
+          }
+        );
+    */
 
   }
 }
