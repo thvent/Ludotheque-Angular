@@ -21,21 +21,16 @@ export class LoginComponent implements OnInit {
 
   formulaire = new FormGroup({
     email: new FormControl('robert.duchmol@domain.fr', [Validators.required]),
-    password: new FormControl('secret', [Validators.required])
+    password: new FormControl('secret00', [Validators.required])
   });
 
   constructor(private messageService: MessageService, private authService: AuthentificationService, private router: Router,
               private route: ActivatedRoute) {
-/*
-    if (this.authService.userValue) {
-      this.router.navigate(['/']);
-    }
-*/
   }
 
   ngOnInit(): void {
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
   }
 
   get email(): AbstractControl {
@@ -54,7 +49,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         () => {
           this.router.navigate([this.returnUrl]);
-          this.messageService.add({severity: 'info', summary: 'Connexion', detail: `Bienvenue, ${this.authService.userValue.name}`, key: 'main'});
+          this.messageService.add({severity: 'info', summary: 'Connexion', detail: `Bienvenue, ${this.authService.userValue.prenom} ${this.authService.userValue.nom}`, key: 'main'});
         },
         error => {
           console.log('Erreur: ', error);

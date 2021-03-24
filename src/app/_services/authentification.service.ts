@@ -16,7 +16,9 @@ const httpOptions = {
 export const ANONYMOUS_USER: User = {
   id: 0,
   email: undefined,
-  name: '',
+  nom: '',
+  prenom: '',
+  pseudo: '',
 };
 
 @Injectable({
@@ -65,7 +67,12 @@ export class AuthentificationService {
   logout(): void {
     const oldUser = this.userValue;
     this.http.post<any>(`${environment.apiUrl}/auth/logout`, {}, httpOptions).subscribe(
-      () => this.messageService.add({severity: 'info', summary: 'Déconnexion', detail: `A bientôt, ${oldUser.name}`, key: 'main'})
+      () => this.messageService.add({
+        severity: 'info',
+        summary: 'Déconnexion',
+        detail: `A bientôt, ${oldUser.prenom} ${oldUser.nom}`,
+        key: 'main'
+      })
     );
     this.stopRefreshTokenTimer();
     this.userSubject.next(ANONYMOUS_USER);
@@ -87,24 +94,18 @@ export class AuthentificationService {
   private startRefreshTokenTimer(): void {
     // parse json object from base64 encoded jwt token
     const jwtToken = JSON.parse(atob(this.userValue.jwtToken.split('.')[1]));
-    // console.log('Jeton : ', jwtToken);
-    // console.log('Jeton.exp : ', jwtToken.exp);
-    // set a timeout to refresh the token a minute before it expires
     const expires = moment(+jwtToken.exp * 1000);
     const nbf = moment(+jwtToken.nbf * 1000);
     console.log('date expires : ', expires.format('LLL'));
     console.log('date nbf : ', nbf.format('LLL'));
-//    const timeout = expires.getTime() - Date.now() - (60 * 1000);
     const timeout = expires.subtract(1, 'minute');
     console.log('date refresh : ', moment(timeout).format('LLL'));
     const delai = moment.duration(moment(timeout).diff(nbf)).asMilliseconds();
-    console.log('delai : ', delai);
     this.refreshTokenTimeout = setTimeout(() => this.refreshToken().subscribe(), delai);
   }
 
   private stopRefreshTokenTimer(): void {
     clearTimeout(this.refreshTokenTimeout);
   }
-
 
 }

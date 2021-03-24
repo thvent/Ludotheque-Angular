@@ -1,3 +1,9 @@
-<ul>
-  <li *ngFor="let user of users$ | async as users">{{user.name}}</li>
-</ul>
+<h3>Profile d'un utilisateur</h3>
+<br>
+<div *ngIf="!loading">
+  <h2>#{{user.id}} {{user.prenom}} {{user.nom}}</h2>
+  <p>{{user.email}}</p>
+
+  <p>Crée : {{user.created_at | amDateFormat:'LL'}} </p>
+  <p>Modifié : {{user.updated_at | amDateFormat:'LL'}} </p>
+</div>

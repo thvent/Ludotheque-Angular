@@ -17,8 +17,8 @@ export class UserService {
   constructor(private http: HttpClient) {
   }
 
-  getUsers(): Observable<UserInfo[]> {
-    return this.http.get<any>(environment.apiUrl + '/users', httpOptions)
+  getProfile(): Observable<UserInfo> {
+    return this.http.get<any>(environment.apiUrl + '/auth/user-profile', httpOptions)
       .pipe(
         map(rep => rep.data.item),
         catchError(err => throwError(err))

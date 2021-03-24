@@ -1,5 +1,9 @@
 export interface UserInfo {
   id: number;
-  name: string;
+  nom: string;
+  prenom: string;
+  pseudo: string;
   email: string;
+  created_at: string;
+  updated_at: string;
 }

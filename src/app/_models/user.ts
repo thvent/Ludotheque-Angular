@@ -1,6 +1,8 @@
 export interface User {
   id: number;
-  name: string;
+  nom: string;
+  prenom: string;
+  pseudo: string;
   email: string;
   jwtToken?: string;
 }
