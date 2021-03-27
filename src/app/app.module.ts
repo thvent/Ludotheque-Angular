@@ -18,6 +18,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {JwtInterceptorService} from './_services/jwt-interceptor.service';
 import { ProfileComponent } from './profile/profile.component';
 import {UserService} from './_services/user.service';
+import { LpSolverTestComponent } from './lp-solver-test/lp-solver-test.component';
+import {MarkdownModule} from 'ngx-markdown';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -25,11 +27,13 @@ registerLocaleData(localeFr, 'fr');
   declarations: [
     AppComponent,
     LoginComponent,
-    ProfileComponent
+    ProfileComponent,
+    LpSolverTestComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    MarkdownModule.forRoot(),
     AppRoutingModule,
     MomentModule,
     MessagesModule,

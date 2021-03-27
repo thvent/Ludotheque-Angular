@@ -1,0 +1,186 @@
+<markdown ngPreserveWhitespaces>
+# Un exemple d'utilisation de l'API jsLPSolver \...
+
+------------------------------------------------------------------------
+
+## Le problème des sachets de papillotes
+
+Une boutique fabrique et vend des sachets de bonbons constitués de
+différents types de papillotes (P1,P2,P3). Deux types de sachets (S1 et
+S2) sont fabriqués en boutique. Un sachet de type S1 permet un bénéfice
+de 4.2 euros tandis qu'un sachet de type S2 permet un bénéfice de 5.1
+euros. Chaque sachet est constitué par les nombres de papillotes
+suivants :
+
+-   Un sachet de type S1 : 5 papillotes de type P1, 8 papillotes de type P2 et 5 papillotes de type P3
+-   Un sachet de type S2 : 7 papillotes de type P1, 3 papillotes de type P2 et 8 papillotes de type P3
+
+Les quantités de papillotes disponibles sont les suivantes :
+
+-   Nombre de papillotes de type P1 : 200
+-   Nombre de papillotes de type P2 : 250
+-   Nombre de papillotes de type P3 : 220
+
+Quels sont les nombres de chacun des types de sachets de bonbons que
+doit produire la boutique afin de maximiser son bénéfice (nous supposons
+qu'elle peut vendre toute sa production) ?
+
+</markdown>
+
+  <button (click)="resolutionProbleme()">Résoudre le problème !</button>
+
+<markdown ngPreserveWhitespaces>
+  ## Modélisation du problème des sachets de papillotes
+
+  Comme écrit précédemment, les caractéristiques du problème à résoudre
+  doivent être définies à travers un objet. Ici, nous utiliserons une
+  variable appelée `probleme` pour référencer cet objet.
+  Le problème des sachets de papillotes est
+  représenté de la manière suivante :
+
+  ``` typescript
+  probleme = &#x7b;
+    variables: &#x7b;
+      s1: &#x7b;
+        p1: 5,
+        p2: 8,
+        p3: 5,
+        benefice: 4.2
+      &#x7d;,
+      s2: &#x7b;
+        p1: 7,
+        p2: 3,
+        p3: 8,
+        benefice: 5.1
+      &#x7d;
+    &#x7d;,
+    ints: &#x7b;s1: 1, s2: 1&#x7d;,
+    binaries: &#x7b;&#x7d;,
+    constraints: &#x7b;
+      p1: &#x7b;max: 200&#x7d;,
+      p2: &#x7b;max: 250&#x7d;,
+      p3: &#x7b;max: 220&#x7d;
+    &#x7d;,
+    opType: 'max',
+    optimize: 'benefice'
+  &#x7d;;
+  ```
+
+  Dans la suite nous allons détailler les différentes propriétés de l'objet `probleme`.
+
+  ### Les variables de décision : la propriété `variables`
+
+  ```typescript
+  "variables": &#x7b;
+    "s1": &#x7b;
+      "p1": 5,
+      "p2": 8,
+      "p3": 5,
+      "benefice": 4.2
+    &#x7d;,
+    "s2": &#x7b;
+      "p1": 7,
+      "p2": 3,
+      "p3": 8,
+      "benefice": 5.1
+    &#x7d;
+  &#x7d;,
+  ```
+
+  La propriété `variables` permet de définir les différentes variables de décision de notre problème.
+  Ici, pour le problème des sachets de papillotes, nous avons deux variables de décision : s1 (le nombre de sachets de type S1) et s2
+  le nombre de sachets de type S2.
+  Chaque variable de décision correspondra à un objet qui sera propriété de la proriété variables.
+
+  Chaque variable (de décision) à également des propriétés associées à des valeurs.
+  Ces propriétés peuvent représenter des ressources, des coûts, des bénéficies, des pertes, \...
+  Ici, à chaque variable de décision nous avons associé les quantités de papillotes (les propriétés p1,p2 et p3) nécessaires à la fabrication d\'un sachet du type correspondant et le bénéfice (la propriété benefice) rapporté lors de sa vente.
+  Les contraintes porteront sur ces propriétés.
+
+  ### Le type des variables de décision : les propriétés `ints` et `binaries`
+
+  ```typescript
+  "ints": &#x7b;"s1": 1, "s2": 1&#x7d;,
+  "binaries" &#x7b;&#x7d;,
+  ```
+
+  La propriété `ints` permet de définir les différentes variables de décision qui sont entières (remarque : mettre toujours la valeur 1 aux variables listées).
+
+  Tandis que la proriété `binaries` permet de définir les variables de décision binaires (variables entières dont les valeurs sont 0 et 1).
+  Pour notre problème les deux variables de décision s1 et s2 sont entières.
+
+  ### Les contraintes : la propriété constraints
+
+  ```typescript
+  "constraints": &#x7b;
+  "p1": &#x7b;"max": 200&#x7d;,
+  "p2": &#x7b;"max": 250&#x7d;,
+  "p3": &#x7b;"max": 220&#x7d;
+  &#x7d;,
+  ```
+
+  La propriété `constraints` permet de définir les contraintes.
+  Chaque contrainte porte sur une proriété des variables de décision.
+  Pour chaque contrainte, nous pouvons définir une valeur (contrainte de type "equal"), une valeur maximale (contrainte de type "max") ou une valeur minimale (contrainte de type "min").
+  Pour notre problème les quantités totales des différentes papillotes utilisées pour la confection des sachets sont limitées.
+  Nous définissons pour chacune des propriétés correspondantes une valeur maximale.
+
+  ### La fonction objective : les propriétés opType et optimize
+
+  ```typescript
+  "opType": "max",
+  "optimize": "benefice"
+  ```
+
+  Les propriétés `opType` et `optimize` permettent de définir la fonction objective.
+  La propriété opType peut être associée à la valeur "min" (pour minimiser un critère) ou la valeur "max" (pour maximiser un critère).
+  Le critère à minimiser ou à maximiser est défini par la propriété optimize.
+  Ce critère est une propriété associée aux variables de décision.
+  Pour notre problème, nous voulons maxmimiser les bénifices (la propriété benefice).
+
+  ------------------------------------------------------------------------
+
+  # Résolution d'un problème de sac à dos
+
+  Nous disposons d'un sac à dos d'une capacité de 40 kg et de 6 objets avec les caractéristiques suivantes :
+
+  - Objet O1 : poids 12 kg, valeur 10 euros
+  - Objet O2 : poids 11 kg, valeur 10 euros
+  - Objet O3 : poids 7 kg, valeur 15 euros
+  - Objet O4 : poids 25 kg, valeur 32 euros
+  - Objet O5 : poids 10 kg, valeur 7 euros
+  - Objet O6 : poids 5 kg, valeur 7 euros
+
+  Quels sont les objets que je peux mettre dans le sac à dos, tout en respectant sa capacité, et de telle manière que la somme des valeurs des objets mis dans le sac à dos soit maximale (cette somme devra également être affichée) ?
+
+  En vous inspirant de l'exemple précédent, insérez le code qui suit dans le fichier `lp-solver-test.component.ts` afin de résoudre le problème du sac à dos.
+
+  ```typescript
+  sacAdoc = &#x7b;
+  "variables": &#x7b;
+  //... A Compléter
+&#x7d;,
+  "ints": &#x7b;&#x7d;,
+  "binaries": &#x7b;
+    //... A Compléter
+  &#x7d;,
+  "constraints": &#x7b;
+  //... A Compléter
+  &#x7d;,
+  "opType": "max",
+  "optimize": "... Changez moi ! ..." // A Modifier
+  &#x7d;;
+
+  resolutionSacADos()&#x7b;
+    resultat = solver.Solve(sacADos);
+    console.log(resultat);
+   // A Compléter
+    this.messageService.add(&#x7b;
+    key: 'main',
+    severity: 'info',
+    detail: `$&#x7b;'Changez moi !'&#x7d;`,
+    &#x7d;); // A Modifier
+  &#x7d;
+  ```
+
+</markdown>
