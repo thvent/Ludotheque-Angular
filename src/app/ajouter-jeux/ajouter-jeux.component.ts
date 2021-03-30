@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MessageService} from 'primeng/api';
-import {AuthentificationService} from '../_services/authentification.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AjouterJeuxService} from '../_services/ajouter-jeux.service';
 import {first} from 'rxjs/operators';
@@ -34,7 +33,7 @@ export class AjouterJeuxComponent implements OnInit {
     nom: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(100)]),
     description: new FormControl('', [Validators.required, Validators.maxLength(300)]),
     regles: new FormControl('', [Validators.required, Validators.maxLength(300)]),
-    image: new FormControl('', [Validators.required]),
+    image: new FormControl(''),
     themes: new FormControl('', [Validators.required]),
     editeur: new FormControl('', [Validators.required]),
     dure: new FormControl('', [Validators.required]),

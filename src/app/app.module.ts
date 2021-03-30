@@ -28,6 +28,8 @@ import {ButtonModule} from 'primeng/button';
 import { AchatJeuxComponent } from './achat-jeux/achat-jeux.component';
 import {JeuService} from './_services/jeu.service';
 
+import { EnvoieColisComponent } from './envoie-colis/envoie-colis.component';
+import {PanelModule} from 'primeng/panel';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -41,7 +43,8 @@ registerLocaleData(localeFr, 'fr');
     NewaccountComponent,
     ListeJeuxComponent,
     DetailsJeuComponent,
-    AchatJeuxComponent
+    AchatJeuxComponent,
+    EnvoieColisComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +57,8 @@ registerLocaleData(localeFr, 'fr');
     HttpClientModule,
     ReactiveFormsModule,
     MenubarModule,
-    ButtonModule
+    ButtonModule,
+    PanelModule
   ],
   providers: [AuthentificationService, MessageService,
     {provide: LOCALE_ID, useValue: 'fr-FR'},

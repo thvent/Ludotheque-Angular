@@ -6,8 +6,8 @@ export interface Jeu {
   editeur: number;
   langue: string;
   age: number;
-  poids: number;
   nombre_joueurs: any;
+  poids: string;
   categorie: string;
   duree: string;
   regles: string;

@@ -1,0 +1,33 @@
+<form [formGroup]="formulaire" (ngSubmit)="onSubmit()">
+
+<div *ngFor="let jeux of liste">
+  <p-panel>
+    <ng-template pTemplate="header">
+      Nom : {{jeux.jeu.nom}}
+    </ng-template>
+    Description : {{jeux.jeu.description}}<br>
+    Thèmes : {{jeux.jeu.theme}}<br>
+    Catégorie : {{jeux.jeu.categorie}}<br>
+    Age : {{jeux.jeu.age}}<br>
+    Durée : {{jeux.jeu.duree}}<br>
+    Nombre de joueurs : {{jeux.jeu.nombreJoueurs}}<br>
+    Poids : {{jeux.jeu.poids}}<br>
+    <ng-template pTemplate="footer">
+      {{jeux.lieu}}<br>
+      {{jeux.date_achat}}<br>
+      {{jeux.prix}}€
+    </ng-template>
+  </p-panel>
+  <input type="checkbox" (click)="mettre(jeux.jeu.nom, jeux.jeu.id, jeux.jeu.poids)" id="{{jeux.jeu.nom}}" name="{{jeux.jeu.nom}}">
+  <label for="{{jeux.jeu.nom}}">Transmettre</label>
+  {{this.formulaire.addControl(jeux.jeu.nom, this.validateur)}}
+</div>
+  <p>Poids maximale en envoie sécurisé : 50</p>
+  <p>Poids Actuelle : {{poidsActuelle}}</p>
+  <p>Poids Totale : {{poidsTotal}}</p>
+<button (click)="display()">Transmettre</button>
+
+  <p>Liste de Jeux à transmettre : {{montrer}}</p>
+</form>
+
+
