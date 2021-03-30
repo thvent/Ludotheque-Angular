@@ -25,7 +25,11 @@ import { ListeJeuxComponent } from './liste-jeux/liste-jeux.component';
 import { DetailsJeuComponent } from './details-jeu/details-jeu.component';
 import {MenubarModule} from 'primeng/menubar';
 import {ButtonModule} from 'primeng/button';
+import { AchatJeuxComponent } from './achat-jeux/achat-jeux.component';
+import {JeuService} from './_services/jeu.service';
 
+import { EnvoieColisComponent } from './envoie-colis/envoie-colis.component';
+import {PanelModule} from 'primeng/panel';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -38,7 +42,9 @@ registerLocaleData(localeFr, 'fr');
     AjouterJeuxComponent,
     NewaccountComponent,
     ListeJeuxComponent,
-    DetailsJeuComponent
+    DetailsJeuComponent,
+    AchatJeuxComponent,
+    EnvoieColisComponent
   ],
   imports: [
     BrowserModule,
@@ -51,12 +57,14 @@ registerLocaleData(localeFr, 'fr');
     HttpClientModule,
     ReactiveFormsModule,
     MenubarModule,
-    ButtonModule
+    ButtonModule,
+    PanelModule
   ],
   providers: [AuthentificationService, MessageService,
     {provide: LOCALE_ID, useValue: 'fr-FR'},
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true },
-    UserService
+    UserService,
+    JeuService,
   ],
   bootstrap: [AppComponent]
 })

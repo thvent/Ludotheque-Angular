@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import {AuthentificationService} from '../_services/authentification.service';
-import {first} from 'rxjs/operators';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MessageService} from 'primeng/api';
 
@@ -19,10 +18,8 @@ export class NewaccountComponent implements OnInit {
     email: null,
     password: null
   };
-  
-  loading = false;
-  returnUrl: string;
-  error = '';
+
+
 
   formulaire = new FormGroup({
     nom: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
@@ -38,7 +35,6 @@ export class NewaccountComponent implements OnInit {
   }
 
   ngOnInit(): void {
-	  this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
   }
 
   checkPasswords(group: FormGroup) { // here we have the 'passwords' group
@@ -74,23 +70,7 @@ export class NewaccountComponent implements OnInit {
     
     onSubmit(): void {
 		this.form = {...this.form, ...this.formulaire.value};
-		this.loading = true;
-		this.authService.register(this.form.prenom, this.form.nom, this.form.pseudo, this.form.email, this.form.password)
-		.pipe(first())
-      .subscribe(
-        () => {
-          this.router.navigate([this.returnUrl]);
-          this.messageService.add({severity: 'info', summary: 'Création', detail: `Compte créé`, key: 'main'});
-        },
-        error => {
-          console.log('Erreur: ', error);
-          // this.error = error.error.data.values[0];
-          this.loading = false;
-          this.messageService.add({severity: 'error', summary: 'Erreur', detail: this.error, key: 'main'});
-        }
-      );
-    
-
+		this.authService.register(this.form.prenom, this.form.nom, this.form.pseudo, this.form.email, this.form.password);
   }
 
 }
