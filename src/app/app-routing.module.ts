@@ -4,12 +4,14 @@ import {LoginComponent} from './login/login.component';
 import {ProfileComponent} from './profile/profile.component';
 import {LpSolverTestComponent} from './lp-solver-test/lp-solver-test.component';
 import {AjouterJeuxComponent} from './ajouter-jeux/ajouter-jeux.component';
+import {NewaccountComponent} from './newaccount/newaccount.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'ro', component: LpSolverTestComponent},
-  {path: 'ajouter-jeux', component: AjouterJeuxComponent}
+  {path: 'ajouter-jeux', component: AjouterJeuxComponent},
+  {path: 'newaccount', component: NewaccountComponent}
 ];
 
 @NgModule({

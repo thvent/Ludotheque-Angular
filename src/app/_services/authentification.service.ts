@@ -63,6 +63,22 @@ export class AuthentificationService {
           // return of('');
         }));
   }
+  
+  register(prenom:string, nom:string, pseudo:string, email:string, password:string): Observable<any> {
+	  console.log('email', email, 'nom', nom, 'prenom', prenom, 'pseudo', pseudo, 'password', password);
+	  return this.http.post<any>(`${environment.apiUrl}/auth/register`, {prenom, nom, pseudo, email, password}, httpOptions)
+      .pipe(
+        tap(rep => console.log(rep)),
+        map(rep => {
+          console.log('User Registered');
+        }),
+        shareReplay(),
+        catchError(err => {
+		      console.log(err);
+          return throwError('bug');
+          // return of('');
+        }));
+  }
 
   logout(): void {
     const oldUser = this.userValue;
