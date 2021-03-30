@@ -1,0 +1,25 @@
+<h1>Liste des jeux</h1>
+
+<div class="container">
+  <div class="row">
+    <div *ngFor="let jeu of lesJeux" class="col s6 m4">
+      <div class="card horizontal">
+        <div class="card-image">
+          <img [src]="jeu.url_media">
+        </div>
+        <div class="card-stacked">
+          <div class="card-content">
+            <p>{{ jeu.nom }}</p>
+            <p>{{ jeu.theme }}</p>
+            <p>{{ jeu.duree }}</p>
+            <p>{{ jeu.nombre_joueurs }}</p>
+            <p>{{ jeu.age }}</p>
+            <br>
+            <button class="accent-1" (click)="jeuSelectionne(jeu)">Détails</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
