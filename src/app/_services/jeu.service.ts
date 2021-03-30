@@ -18,7 +18,7 @@ export class JeuService {
   }
 
   getProfile(): Observable<Jeu> {
-    return this.http.get<any>(environment.apiUrl + '/auth/jeux', httpOptions)
+    return this.http.get<any>(environment.apiUrl + '/jeux', httpOptions)
       .pipe(
         map(rep => rep.data.item),
         catchError(err => throwError(err))
