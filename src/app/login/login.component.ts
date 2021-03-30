@@ -4,6 +4,7 @@ import {AuthentificationService} from '../_services/authentification.service';
 import {first} from 'rxjs/operators';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MessageService} from 'primeng/api';
+import {AppComponent} from '../app.component';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +26,7 @@ export class LoginComponent implements OnInit {
   });
 
   constructor(private messageService: MessageService, private authService: AuthentificationService, private router: Router,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute, items: AppComponent) {
   }
 
   ngOnInit(): void {

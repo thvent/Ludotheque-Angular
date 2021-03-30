@@ -1,7 +1,6 @@
 import {LOCALE_ID, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import localeFr from '@angular/common/locales/fr';
-
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {LoginComponent} from './login/login.component';
@@ -24,6 +23,8 @@ import {AjouterJeuxComponent} from './ajouter-jeux/ajouter-jeux.component';
 import { NewaccountComponent } from './newaccount/newaccount.component';
 import { ListeJeuxComponent } from './liste-jeux/liste-jeux.component';
 import { DetailsJeuComponent } from './details-jeu/details-jeu.component';
+import {MenubarModule} from 'primeng/menubar';
+import {ButtonModule} from 'primeng/button';
 
 
 registerLocaleData(localeFr, 'fr');
@@ -48,7 +49,9 @@ registerLocaleData(localeFr, 'fr');
     MessagesModule,
     ToastModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MenubarModule,
+    ButtonModule
   ],
   providers: [AuthentificationService, MessageService,
     {provide: LOCALE_ID, useValue: 'fr-FR'},
