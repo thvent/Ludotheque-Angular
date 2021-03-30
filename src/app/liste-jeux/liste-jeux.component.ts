@@ -24,6 +24,14 @@ export class ListeJeuxComponent implements OnInit {
     console.log(lesJeux);
   }
 
+  ok(): void {
+    const lesJeuxFiltre = [];
+    this.service.getJeux().subscribe(
+      str => lesJeuxFiltre.push(str.nombre_joueurs = 2), noop, () => this.jeux$ = of(lesJeuxFiltre[0])
+    );
+    console.log(lesJeuxFiltre);
+  }
+
 
   jeuSelectionne(jeu: Jeu): void {
     this.router.navigate(['/jeu', jeu.id]);

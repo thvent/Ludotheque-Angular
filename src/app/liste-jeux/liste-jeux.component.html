@@ -22,6 +22,35 @@
     </div>
   </div>
 </div>
+<h1>_________________________________________________________________________________</h1>
+<input type="number" id="tentacles" name="myInput"
+       min="10" max="100">
+
+<div class="container">
+  <div class="row">
+    <div *ngFor="let jeu of jeux$ | async" class="col s6 m4">
+      <div *ngIf="jeu.nombre_joueurs== 9;then contenu"></div>
+      <ng-template #contenu>
+        <div class="card horizontal">
+          <div class="card-image">
+            <img [src]="jeu.url_media" style="width: 20px">
+          </div>
+          <div class="card-stacked">
+            <div class="card-content">
+              <p>Nom du jeu : {{ jeu.nom }}</p>
+              <p>Thème du jeu : {{ jeu.theme_id.nom }}</p>
+              <p>Durée du jeu : {{ jeu.duree }}</p>
+              <p>Nombre de joueur : {{ jeu.nombre_joueurs }}</p>
+              <p>Âge minimum recquis : {{ jeu.age }}</p>
+              <button class="accent-1" (click)="jeuSelectionne(jeu)">Détails</button>
+              <br>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>
 
 
 
