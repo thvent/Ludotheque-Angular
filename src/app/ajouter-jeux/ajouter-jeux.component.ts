@@ -95,7 +95,7 @@ export class AjouterJeuxComponent implements OnInit {
     this.form = {...this.form, ...this.formulaire.value};
     this.loading = true;
     this.gameService.addGame(this.form.nom, this.form.description, this.form.themes, this.form.editeur, this.form.langue, this.form.age,
-      this.form.poids, this.form.nombreJoueurs, this.form.categorie, this.form.dure, this.form.regles).pipe(first())
+      this.form.poids, this.form.nombre_joueurs, this.form.categorie, this.form.dure, this.form.regles).pipe(first())
       .subscribe(() => {
         this.router.navigate([this.returnUrl]);
         this.messageService.add({severity: 'info', summary: 'ajout', detail: `Ajout de : ${this.form.nom}`, key: 'main'});

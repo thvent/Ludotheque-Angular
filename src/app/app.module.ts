@@ -22,6 +22,9 @@ import { LpSolverTestComponent } from './lp-solver-test/lp-solver-test.component
 import {MarkdownModule} from 'ngx-markdown';
 import {AjouterJeuxComponent} from './ajouter-jeux/ajouter-jeux.component';
 import { NewaccountComponent } from './newaccount/newaccount.component';
+import { ListeJeuxComponent } from './liste-jeux/liste-jeux.component';
+import { DetailsJeuComponent } from './details-jeu/details-jeu.component';
+
 
 registerLocaleData(localeFr, 'fr');
 
@@ -32,7 +35,9 @@ registerLocaleData(localeFr, 'fr');
     ProfileComponent,
     LpSolverTestComponent,
     AjouterJeuxComponent,
-    NewaccountComponent
+    NewaccountComponent,
+    ListeJeuxComponent,
+    DetailsJeuComponent
   ],
   imports: [
     BrowserModule,
