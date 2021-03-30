@@ -1,0 +1,88 @@
+<form [formGroup]="formulaire" (ngSubmit)="onSubmit()">
+  Nom : <input type="text" formControlName="nom">
+  <div *ngIf="nom.invalid && nom.touched" class="p-card">
+    <p class="p-card-content">Le nom du jeux est requis<p>
+  </div>
+  <br>
+
+  Description : <textarea formControlName="description"></textarea>
+  <div *ngIf="description.invalid && description.touched" class="p-card">
+    <p class="p-card-content">La description du jeux est requis<p>
+  </div><br>
+
+  Règles : <textarea formControlName="regles"></textarea>
+  <div *ngIf="regles.invalid && regles.touched" class="p-card">
+    <p class="p-card-content">Les règles du jeux est requis<p>
+  </div><br>
+  Images URL : <input type="text" formControlName="image">
+  <div *ngIf="themes.invalid && themes.touched" class="p-card">
+    <p class="p-card-content">Une image est requise<p>
+  </div><br>
+  Thème : <input type="number" formControlName="themes">
+  <div *ngIf="themes.invalid && themes.touched" class="p-card">
+    <p class="p-card-content">Les thèmes du jeux sont requis<p>
+  </div><br>
+  Editeur : <input type="number" formControlName="editeur">
+  <div *ngIf="editeur.invalid && editeur.touched" class="p-card">
+    <p class="p-card-content">L'éditeur du jeux est requis<p>
+  </div><br>
+
+  Durée :
+  <select name="dure" id="dure" formControlName="dure">
+    <option value="- de 10 Minute">- de 10 Minute</option>
+    <option value="Entre 10 et 20 Min">Entre 10 et 20 Min</option>
+    <option value="Une demi heure">Une demi heure</option>
+    <option value="une heure">une heure</option>
+    <option value="Plus d'une heure">Plus d'une heure</option>
+  </select>
+  <div *ngIf="dure.invalid && dure.touched" class="p-card">
+    <p class="p-card-content">Veuillez sélectionner une durée<p>
+  </div><br>
+
+  Langue : <input type="text" formControlName="langue">
+  <div *ngIf="langue.invalid && langue.touched" class="p-card">
+    <p class="p-card-content">Le langue du jeux est requise<p>
+  </div><br>
+
+  Nombre de joueurs (entre 2 et 10) : <input type="number" formControlName="number">
+  <div *ngIf="number.invalid && number.touched" class="p-card">
+    <p class="p-card-content">Le nombre de joueur n'est pas renseignée ou incorrect<p>
+  </div><br>
+
+  Poids (entre 0.1 et 5) : <input type="number" formControlName="poids">
+  <div *ngIf="poids.invalid && poids.touched" class="p-card">
+    <p class="p-card-content">Le poids du jeux est requis (entre 0.1 et 5)<p>
+  </div><br>
+
+  Age :
+  <select name="age" id="age" formControlName="age">
+  <option value="4">4</option>
+  <option value="6">6</option>
+  <option value="10">10</option>
+  <option value="14">14</option>
+  <option value="18">16</option>
+</select>
+  <div *ngIf="age.invalid && age.touched" class="p-card">
+    <p class="p-card-content">L'âge minimum du jeux est requis<p>
+  </div><br>
+
+  Catégorie :
+  <select name="categorie" id="categorie" formControlName="categorie">
+    <option value="Cartes à  jouer">Cartes à  jouer</option>
+    <option value="Escape Game">Escape Game</option>
+    <option value="Jeu d'Ambiance">Jeu d'Ambiance</option>
+    <option value="Jeu de Cartes">Jeu de Cartes</option>
+    <option value="Jeu de dés">Jeu de dés</option>
+    <option value="Jeu de lettres">Jeu de lettres</option>
+    <option value="Jeu de logique">Jeu de logique</option>
+    <option value="Jeu de pions">Jeu de pions</option>
+    <option value="Jeu de rôle">Jeu de rôle</option>
+    <option value="Jeu de tuiles">jeu de tuiles</option>
+    <option value="Murder Party">Murder Party</option>
+  </select>
+  <div *ngIf="categorie.invalid && categorie.touched" class="p-card">
+    <p class="p-card-content">La catégorie du jeux est requise<p>
+  </div><br>
+
+  <button [disabled]="!formulaire.valid">Valide</button>
+</form>
