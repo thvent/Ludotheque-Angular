@@ -1,11 +1,42 @@
 .card{
-  border: black solid 2px;
+  border: #003399 solid 2px;
+  border-radius: 5px;
   right: 10%;
   width: 20%;
-  margin-bottom: 5%;
+  margin: 2%;
   display: block;
-  margin-left:auto;
-  margin-right:auto;
+  float: left;
+  padding: 5px;
+}
+
+.card-image{
   text-align: center;
-  padding: 5px 5px 5px 5px;
+}
+
+.card-stacked{
+  margin-left: 10%;
+}
+
+.accent-1{
+  background-color: #003399;
+  border: none;
+  color: white;
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.accent-1:hover{
+  background-color: white;
+  color: #003399;
+  font-weight: bold;
+}
+.card-content{
+  color: #003399;
+  font-family: Arial, sans-serif;
+}
+h1{
+  color: #003399;
 }
