@@ -22,6 +22,8 @@ import { LpSolverTestComponent } from './lp-solver-test/lp-solver-test.component
 import {MarkdownModule} from 'ngx-markdown';
 import {AjouterJeuxComponent} from './ajouter-jeux/ajouter-jeux.component';
 import { NewaccountComponent } from './newaccount/newaccount.component';
+import { AchatJeuxComponent } from './achat-jeux/achat-jeux.component';
+import {JeuService} from './_services/jeu.service';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -32,7 +34,8 @@ registerLocaleData(localeFr, 'fr');
     ProfileComponent,
     LpSolverTestComponent,
     AjouterJeuxComponent,
-    NewaccountComponent
+    NewaccountComponent,
+    AchatJeuxComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,8 @@ registerLocaleData(localeFr, 'fr');
   providers: [AuthentificationService, MessageService,
     {provide: LOCALE_ID, useValue: 'fr-FR'},
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true },
-    UserService
+    UserService,
+    JeuService,
   ],
   bootstrap: [AppComponent]
 })

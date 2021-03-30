@@ -11,7 +11,7 @@ const routes: Routes = [
   {path: 'profile', component: ProfileComponent},
   {path: 'ro', component: LpSolverTestComponent},
   {path: 'ajouter-jeux', component: AjouterJeuxComponent},
-  {path: 'newaccount', component: NewaccountComponent}
+  {path: 'newaccount', component: NewaccountComponent},
 ];
 
 @NgModule({
