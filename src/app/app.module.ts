@@ -21,6 +21,8 @@ import {UserService} from './_services/user.service';
 import { LpSolverTestComponent } from './lp-solver-test/lp-solver-test.component';
 import {MarkdownModule} from 'ngx-markdown';
 import {AjouterJeuxComponent} from './ajouter-jeux/ajouter-jeux.component';
+import { EnvoieColisComponent } from './envoie-colis/envoie-colis.component';
+import {PanelModule} from 'primeng/panel';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -30,7 +32,8 @@ registerLocaleData(localeFr, 'fr');
     LoginComponent,
     ProfileComponent,
     LpSolverTestComponent,
-    AjouterJeuxComponent
+    AjouterJeuxComponent,
+    EnvoieColisComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,8 @@ registerLocaleData(localeFr, 'fr');
     MessagesModule,
     ToastModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PanelModule
   ],
   providers: [AuthentificationService, MessageService,
     {provide: LOCALE_ID, useValue: 'fr-FR'},

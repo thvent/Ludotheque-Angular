@@ -18,7 +18,7 @@ export const ANONYMOUS_GAME: Jeu = {
   editeur: 2,
   langue: '',
   age: 6,
-  poids: 1,
+  poids: '',
   nombreJoueurs: 2,
   categorie: '',
   duree: '',
