@@ -1,5 +1,16 @@
+<div>
+  Commentaires:
 <ul>
 <li *ngFor="let commentaire of commentaires$ | async">
-  {{ commentaire }}
+  Commentaire:
+  {{ commentaire.commentaire }}
+  <br />
+  Date:
+  {{ commentaire.date_com }}
+  <br />
+  Note:
+  {{ commentaire.note }}
+  <br />
 </li>
 </ul>
+</div>

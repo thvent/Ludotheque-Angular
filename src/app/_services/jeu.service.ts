@@ -3,9 +3,10 @@ import {Observable, of, throwError} from 'rxjs';
 import {Jeu} from '../_models/jeu';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../environments/environment';
-import {catchError, map, first, mergeMap, toArray} from 'rxjs/operators';
+import {catchError, map, first, mergeMap, toArray, subscribeOn} from 'rxjs/operators';
 import {Commentaire} from '../_models/Commentaire';
 import {DetailsJeu} from '../_models/details-jeu';
+import {subscribeTo} from 'rxjs/internal-compatibility';
 
 
 @Injectable({
@@ -41,12 +42,13 @@ export class JeuService {
       );
   }
 
-  getCommentaires(jeu_id: number): Observable<Commentaire> {
-    return this.getJeuById(jeu_id).pipe(
+  getCommentaires(jeu_id: number): Observable<Observable<Commentaire>> {
+    let t = this.getJeuById(jeu_id).pipe(
       map(jeu => jeu.commentaires),
-      mergeMap(() => true),
       catchError(err => throwError(err))
-    )
+    );
+    console.log("now");
+    return  t;
   };
 
   getJeuById(id: number): Observable<DetailsJeu> {

@@ -11,12 +11,13 @@ import {Commentaire} from '../_models/Commentaire';
 })
 export class AfficherCommentairesComponent implements OnInit {
 
-  commentaires$: Observable<Commentaire>;
+  commentaires$: Observable<Observable<Commentaire>>;
 
   constructor(private jeuService: JeuService) { }
 
   ngOnInit(): void {
-    this.commentaires$ = this.jeuService.getCommentaires(0);
+    this.commentaires$ = this.jeuService.getCommentaires(1);
+    console.log("or m")
   }
 
 }
