@@ -9,11 +9,11 @@
         </div>
         <div class="card-stacked">
           <div class="card-content">
-            <p>{{ jeu.nom }}</p>
-            <p>{{ jeu.theme }}</p>
-            <p>{{ jeu.duree }}</p>
-            <p>{{ jeu.nombre_joueurs }}</p>
-            <p>{{ jeu.age }}</p>
+            <p>Nom : {{ jeu.nom }}</p>
+            <p>Theme : {{ jeu.theme_id.nom}}</p>
+            <p>Durée :{{ jeu.duree }}</p>
+            <p>Nombre de joueur : {{ jeu.nombre_joueurs}}</p>
+            <p>Âge minimum requis : {{ jeu.age }}</p>
             <button class="accent-1" (click)="jeuSelectionne(jeu)">Plus d'infos</button>
             <br>
           </div>
@@ -31,7 +31,7 @@
     <option *ngFor="let j of (jeux$ | async)" [value]="j.nombre_joueurs"> {{ j.nombre_joueurs}} </option>
   </select>
   <br/>
-  <button pButton class="accent-1" type="submit" label="Filtrer" [disabled]="!formulaire.valid" (click)="showDiv()">Filtrer</button>
+  <button pButton class="accent-1" type="submit" label="Filtrer" [disabled]="!formulaire.valid" (click)="showDiv()"></button>
 </form>
 
 <div id ="filtre" class="container" style="display:none">
