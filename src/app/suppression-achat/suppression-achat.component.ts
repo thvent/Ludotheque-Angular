@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../_services/user.service';
 import {AuthentificationService} from '../_services/authentification.service';
-import {filter, map} from 'rxjs/operators';
+import {filter, map, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {Jeu} from '../_models/jeu';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
@@ -13,7 +13,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class SuppressionAchatComponent implements OnInit {
 
-  jeuxAchetes:Observable<Jeu>;
+  jeux$: Observable<Jeu>;
 
   form: any = {
     jeu_id: null
@@ -27,18 +27,16 @@ export class SuppressionAchatComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.getDetailedUser(this.authService.userValue.id).pipe(
-      map(user => user.jeuxAchetes)
+      map(user => user.jeux),
     ).subscribe(
-      rep => this.jeuxAchetes = rep;
+      rep => this.jeux$ = rep
     );
+    this.jeux$.subscribe(console.log);
   }
 
   onSubmit(): void {
     this.form = {...this.form, ...this.formulaire.value};
-    let jeu:Jeu;
-    this.jeuxAchetes.subscribe()
-    this.userService.suppression_achat(
-    ));
+    this.userService.suppression_achat(this.form.jeu_id);
   }
 
 }

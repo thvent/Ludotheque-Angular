@@ -58,9 +58,9 @@ export class UserService {
     );
   }
 
-  suppression_achat(achat_id:number): void {
-    console.log('achat_id', achat_id);
-    this.http.post<any>(`${environment.apiUrl}/users/${this.authService.userValue.id}/vente`, {achat_id}, httpOptions).subscribe(
+  suppression_achat(jeu_id:number): void {
+    console.log('jeu_id', jeu_id);
+    this.http.post<any>(`${environment.apiUrl}/users/${this.authService.userValue.id}/vente`, {jeu_id}, httpOptions).subscribe(
       () => {
         this.messageService.add({
           severity: 'info',

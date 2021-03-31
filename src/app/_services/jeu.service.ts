@@ -6,7 +6,6 @@ import {environment} from '../../environments/environment';
 import {catchError, map, first, mergeMap, toArray, subscribeOn} from 'rxjs/operators';
 import {Commentaire} from '../_models/Commentaire';
 import {DetailsJeu} from '../_models/details-jeu';
-import {subscribeTo} from 'rxjs/internal-compatibility';
 
 
 @Injectable({
@@ -51,16 +50,6 @@ export class JeuService {
 
   getJeuById(id: number): Observable<DetailsJeu> {
     console.log('valeur de l\'id = ' + id);
-    return this.http.get<any>(environment.apiUrl + '/jeux/' + id, this.httpOptions)
-      .pipe(
-        map(rep => rep.data.item),
-        first(),
-        catchError(err => throwError(err))
-      );
-  }
-
-  deleteJeu(id: number): void {
-    console.log('suppression du jeu ' + id);
     return this.http.get<any>(environment.apiUrl + '/jeux/' + id, this.httpOptions)
       .pipe(
         map(rep => rep.data.item),
