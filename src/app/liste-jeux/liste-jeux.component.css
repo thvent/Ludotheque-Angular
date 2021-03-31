@@ -40,3 +40,15 @@
 h1{
   color: #003399;
 }
+
+form{
+  margin: 10%;
+}
+
+hr{
+  margin-top: 20%;
+  color: #003399;
+  background: #003399;
+  width: 80%;
+  height: 5px;
+}

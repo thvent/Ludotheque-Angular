@@ -22,14 +22,22 @@
     </div>
   </div>
 </div>
-<h1>_________________________________________________________________________________</h1>
-<input type="number" id="tentacles" name="myInput"
-       min="10" max="100">
+<hr>
+<h1>Filtrage</h1>
+<form [formGroup]="formulaire" (ngSubmit)="onSubmit()">
+  Nombre de joueur :
+  <label for="jeu" class="p-sr-only">Jeu</label>
+  <select id="jeu" formControlName="nombreJoueurs">
+    <option *ngFor="let j of (jeux$ | async)" [value]="j.nombre_joueurs"> {{ j.nombre_joueurs}} </option>
+  </select>
+  <br/>
+  <button pButton class="accent-1" type="submit" label="Filtrer" [disabled]="!formulaire.valid" (click)="showDiv()">Filtrer</button>
+</form>
 
-<div class="container">
+<div id ="filtre" class="container" style="display:none">
   <div class="row">
     <div *ngFor="let jeu of jeux$ | async" class="col s6 m4">
-      <div *ngIf="jeu.nombre_joueurs== 9;then contenu"></div>
+      <div *ngIf="jeu.nombre_joueurs <= nbrJoueur;then contenu"></div>
       <ng-template #contenu>
         <div class="card horizontal">
           <div class="card-image">
@@ -51,6 +59,9 @@
     </div>
   </div>
 </div>
+
+
+
 
 
 
