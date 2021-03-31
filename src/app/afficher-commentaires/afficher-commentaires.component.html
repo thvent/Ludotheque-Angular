@@ -1,4 +1,5 @@
 <ul>
-  <li *ngFor="let jeu "></li>
-
+<li *ngFor="let commentaire of commentaires$ | async">
+  {{ commentaire }}
+</li>
 </ul>

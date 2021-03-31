@@ -3,7 +3,8 @@ import {Observable, of, throwError} from 'rxjs';
 import {Jeu} from '../_models/jeu';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../environments/environment';
-import {catchError, map} from 'rxjs/operators';
+import {catchError, map, first} from 'rxjs/operators';
+import {Commentaire} from '../_models/Commentaire';
 
 
 @Injectable({
@@ -38,4 +39,18 @@ export class JeuService {
         })
       );
   }
+
+  getJeu(jeu_id:number): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/jeux/${jeu_id}`, this.httpOptions)
+      .pipe(
+        first(),
+        catchError(err => throwError(err))
+      );
+  }
+
+  getCommentaires(jeu_id:number): Observable<Commentaire> {
+    return this.getJeu(jeu_id).pipe(
+      map(res => res.data.item.commentaires)
+    )
+  };
 }
