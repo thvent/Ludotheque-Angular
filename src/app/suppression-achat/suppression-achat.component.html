@@ -1,0 +1,11 @@
+<form [formGroup]="formulaire" (ngSubmit)="onSubmit()">
+
+  Jeu:
+  <label for="jeu" class="p-sr-only">Jeu</label>
+  <select id="jeu" formControlName="jeu">
+    <option *ngFor="let jeu of (jeux$ | async)" [value]="jeu.id"> {{ jeu.nom }} </option>
+  </select>
+  <br />
+
+  <button pButton type="submit" label="Valide" [disabled]="!formulaire.valid">Valider</button>
+</form>

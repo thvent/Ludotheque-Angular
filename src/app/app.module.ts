@@ -30,6 +30,7 @@ import {JeuService} from './_services/jeu.service';
 
 import { EnvoieColisComponent } from './envoie-colis/envoie-colis.component';
 import {PanelModule} from 'primeng/panel';
+import { SuppressionAchatComponent } from './suppression-achat/suppression-achat.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -44,7 +45,8 @@ registerLocaleData(localeFr, 'fr');
     ListeJeuxComponent,
     DetailsJeuComponent,
     AchatJeuxComponent,
-    EnvoieColisComponent
+    EnvoieColisComponent,
+    SuppressionAchatComponent
   ],
   imports: [
     BrowserModule,

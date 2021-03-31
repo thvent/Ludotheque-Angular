@@ -46,4 +46,23 @@ export class UserService {
         });}
     );
   }
+
+  suppression_achat(achat_id:number): void {
+    console.log('achat_id', achat_id);
+    this.http.post<any>(`${environment.apiUrl}/users/${this.authService.userValue.id}/vente`, {achat_id}, httpOptions).subscribe(
+      () => {
+        this.messageService.add({
+          severity: 'info',
+          summary: 'Suppression d\'un jeu réussie',
+          key:'main'
+        })},
+      error => {
+        console.log(error);
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Suppression d\'un jeu échoué',
+          key:'main'
+        });}
+    );
+  }
 }
