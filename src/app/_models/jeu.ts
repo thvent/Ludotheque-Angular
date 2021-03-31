@@ -2,8 +2,8 @@ export interface Jeu {
   id: number;
   nom: string;
   description: string;
-  theme: number;
-  editeur: number;
+  theme_id: number;
+  editeur_id: number;
   langue: string;
   age: number;
   nombre_joueurs: any;
