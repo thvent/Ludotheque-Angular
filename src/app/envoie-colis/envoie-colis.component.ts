@@ -37,7 +37,7 @@ export class EnvoieColisComponent implements OnInit {
     this.loading = false;
   }
 
-  validateur = new FormControl(defaultStatus, [Validators.nullValidator]);
+  validateur = new FormControl('', [Validators.nullValidator]);
   formulaire = new FormGroup({
   });
   form: any = {
