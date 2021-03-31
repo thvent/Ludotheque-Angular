@@ -28,10 +28,9 @@ export class UserService {
       );
   }
 
-  achat(jeuId:number, date:string, lieu:string, prix:number): void {
-    console.log('jeuId', jeuId, 'date', date, 'lieu', lieu, 'prix', prix);
-    console.log(`${environment.apiUrl}/users/${this.authService.userValue.id}/achat`);
-    this.http.post<any>(`${environment.apiUrl}/users/${this.authService.userValue.id}/achat`, {jeuId, date, lieu, prix}, httpOptions).subscribe(
+  achat(jeu_id:number, date_achat:string, lieu:string, prix:number): void {
+    console.log('jeuId', jeu_id, 'date', date_achat, 'lieu', lieu, 'prix', prix);
+    this.http.post<any>(`${environment.apiUrl}/users/${this.authService.userValue.id}/achat`, {jeu_id, date_achat, lieu, prix}, httpOptions).subscribe(
       () => {
         this.messageService.add({
           severity: 'info',

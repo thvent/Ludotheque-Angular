@@ -30,6 +30,7 @@ export class AchatJeuxComponent implements OnInit {
 
   formulaire = new FormGroup({
     jeu: new FormControl('', Validators.required),
+    date: new FormControl('', Validators.required),
     lieu: new FormControl('', Validators.required),
     prix: new FormControl('', Validators.required)
   });
@@ -41,7 +42,7 @@ export class AchatJeuxComponent implements OnInit {
   }
 
   onSubmit() : void {
-    this.form = {...this.form, ...this.formulaire.value, date: this.datePipe.transform(new Date(), 'yyyy-MM-dd HH:mm:ss')};
+    this.form = {...this.form, ...this.formulaire.value};
     this.userService.achat(this.form.jeu, this.form.date, this.form.lieu, this.form.prix);
   }
 
