@@ -6,6 +6,7 @@ import {LpSolverTestComponent} from './lp-solver-test/lp-solver-test.component';
 import {AjouterJeuxComponent} from './ajouter-jeux/ajouter-jeux.component';
 import {NewaccountComponent} from './newaccount/newaccount.component';
 import {ListeJeuxComponent} from './liste-jeux/liste-jeux.component';
+import {DetailsJeuComponent} from './details-jeu/details-jeu.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'ajouter-jeux', component: AjouterJeuxComponent},
   {path: 'newaccount', component: NewaccountComponent},
   {path: 'listejeux', component: ListeJeuxComponent},
+  {path: 'listejeux/:id', component: DetailsJeuComponent},
   {path: 'ro', component: LpSolverTestComponent}
 ];
 

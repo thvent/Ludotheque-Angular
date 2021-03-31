@@ -26,7 +26,7 @@ export class ListeJeuxComponent implements OnInit {
 
 
   jeuSelectionne(jeu: Jeu): void {
-    this.router.navigate(['/jeu', jeu.id]);
+    this.router.navigate(['/listejeux', jeu.id]);
   }
 
 }
