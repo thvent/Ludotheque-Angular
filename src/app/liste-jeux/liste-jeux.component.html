@@ -1,19 +1,18 @@
-<h1>Liste des jeux</h1>
-
+<h1 class="title">Liste des jeux</h1>
 <div class="container">
   <div class="row">
     <div *ngFor="let jeu of jeux$ | async" class="col s6 m4">
       <div class="card horizontal">
         <div class="card-image">
-          <img [src]="jeu.url_media" style="width: 20px">
+          <img [src]="jeu.url_media" style="width: 40px">
         </div>
         <div class="card-stacked">
           <div class="card-content">
-            <p>{{ jeu.nom }}</p>
-            <p>{{ jeu.theme }}</p>
-            <p>{{ jeu.duree }}</p>
-            <p>{{ jeu.nombre_joueurs }}</p>
-            <p>{{ jeu.age }}</p>
+            <p><span>Nom du jeu :</span>   {{ jeu.nom }}</p>
+            <p><span>Thème du jeu :</span>   {{ jeu.theme_id.nom }}</p>
+            <p><span>Durée du jeu :</span>   {{ jeu.duree }}</p>
+            <p><span>Nombre de joueur :</span>   {{ jeu.nombre_joueurs }}</p>
+            <p><span>Âge minimum recquis :</span>   {{ jeu.age }}</p>
             <button class="accent-1" (click)="jeuSelectionne(jeu)">Plus d'infos</button>
             <br>
           </div>
@@ -22,14 +21,22 @@
     </div>
   </div>
 </div>
-<h1>_________________________________________________________________________________</h1>
-<input type="number" id="tentacles" name="myInput"
-       min="10" max="100">
 
-<div class="container">
+<h1>Filtrage</h1>
+<form [formGroup]="formulaire" (ngSubmit)="onSubmit()">
+  Nombre de joueur :
+  <label for="jeu" class="p-sr-only">Jeu</label>
+  <select id="jeu" formControlName="nombreJoueurs">
+    <option *ngFor="let j of (jeux$ | async)" [value]="j.nombre_joueurs"> {{ j.nombre_joueurs}} </option>
+  </select>
+  <br/>
+  <button pButton class="accent-1" type="submit" label="Filtrer" [disabled]="!formulaire.valid" (click)="showDiv()"></button>
+</form>
+
+<div id ="filtre" class="container" style="display:none">
   <div class="row">
     <div *ngFor="let jeu of jeux$ | async" class="col s6 m4">
-      <div *ngIf="jeu.nombre_joueurs== 9;then contenu"></div>
+      <div *ngIf="jeu.nombre_joueurs <= nbrJoueur;then contenu"></div>
       <ng-template #contenu>
         <div class="card horizontal">
           <div class="card-image">
@@ -41,7 +48,7 @@
               <p>Thème du jeu : {{ jeu.theme_id.nom }}</p>
               <p>Durée du jeu : {{ jeu.duree }}</p>
               <p>Nombre de joueur : {{ jeu.nombre_joueurs }}</p>
-              <p>Âge minimum recquis : {{ jeu.age }}</p>
+              <p>Âge minimum requis : {{ jeu.age }}</p>
               <button class="accent-1" (click)="jeuSelectionne(jeu)">Détails</button>
               <br>
             </div>
@@ -51,6 +58,44 @@
     </div>
   </div>
 </div>
+
+<form [formGroup]="formulaire2" (ngSubmit)="onSubmit2()">
+  Âge minimum requis :
+  <label for="jeu" class="p-sr-only">Jeu</label>
+  <select id="jeu2" formControlName="age">
+    <option *ngFor="let j of (jeux$ | async)" [value]="j.age"> {{j.age}} </option>
+  </select>
+  <br/>
+  <button pButton class="accent-1" type="submit" label="Filtrer" [disabled]="!formulaire2.valid" (click)="showDiv2()">Filtrer</button>
+</form>
+<div id ="filtre2" class="container" style="display:none">
+  <div class="row">
+    <div *ngFor="let jeu of jeux$ | async" class="col s6 m4">
+      <div *ngIf="jeu.age <= age;then contenu"></div>
+      <ng-template #contenu>
+        <div class="card horizontal">
+          <div class="card-image">
+            <img [src]="jeu.url_media" style="width: 20px">
+          </div>
+          <div class="card-stacked">
+            <div class="card-content">
+              <p>Nom du jeu : {{ jeu.nom }}</p>
+              <p>Thème du jeu : {{ jeu.theme_id.nom }}</p>
+              <p>Durée du jeu : {{ jeu.duree }}</p>
+              <p>Nombre de joueur : {{ jeu.nombre_joueurs }}</p>
+              <p>Âge minimum requis : {{ jeu.age }}</p>
+              <button class="accent-1" (click)="jeuSelectionne(jeu)">Détails</button>
+              <br>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>
+
+
+
 
 
 

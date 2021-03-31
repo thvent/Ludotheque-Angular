@@ -1,65 +1,81 @@
-<form [formGroup]="formulaire" (ngSubmit)="onSubmit()">
+<p-card>
+  <div class="p-mb-3 p-text-bold" id ="intro">Enregistrez-vous ici : </div>
+  <hr>
+  <div class="p-fluid">
+    <form [formGroup]="formulaire" (ngSubmit)="onSubmit()">
 
-Prénom:
-<label for="prenom" class="p-sr-only">Prénom</label>
-<input id="prenom" type="text" pInputText placeholder="Prénom" formControlName="prenom">
-<div *ngIf="prenom.invalid && (prenom.dirty || prenom.touched)" class="mat-error">
-<div *ngIf="prenom?.errors.required" style="color: crimson">Le prénom est obligatoire</div>
-<div *ngIf="prenom?.errors.minlength"  style="color: crimson">Le prénom doit comporter au moins 2 caractères</div>
-<div *ngIf="prenom?.errors.maxlength"  style="color: crimson">Le prénom doit comporter au maximum 100 caractères</div>
-</div><br />
+      Prénom:
+      <div class="p-field">
+        <label for="prenom" class="p-sr-only">Prénom</label>
+        <input id="prenom" type="text" pInputText placeholder="Prénom" formControlName="prenom">
+        <div *ngIf="prenom.invalid && (prenom.dirty || prenom.touched)" class="mat-error">
+          <div *ngIf="prenom?.errors.required" style="color: crimson">Le prénom est obligatoire</div>
+          <div *ngIf="prenom?.errors.minlength"  style="color: crimson">Le prénom doit comporter au moins 2 caractères</div>
+          <div *ngIf="prenom?.errors.maxlength"  style="color: crimson">Le prénom doit comporter au maximum 100 caractères</div>
+        </div>
+      </div>
+      <br />
 
-Nom:
-<label for="nom" class="p-sr-only">Nom</label>
-<input id="nom" type="text" pInputText placeholder="Nom" formControlName="nom">
-<div *ngIf="nom.invalid && (nom.dirty || nom.touched)" class="mat-error">
-<div *ngIf="nom?.errors.required" style="color: crimson">Le nom est obligatoire</div>
-<div *ngIf="nom?.errors.minlength"  style="color: crimson">Le nom doit comporter au moins 2 caractères</div>
-<div *ngIf="nom?.errors.maxlength"  style="color: crimson">Le nom doit comporter au maximum 100 caractères</div>
-</div>
-<br />
+      Nom:
+      <div class="p-field">
+        <label for="nom" class="p-sr-only">Nom</label>
+        <input id="nom" type="text" pInputText placeholder="Nom" formControlName="nom">
+        <div *ngIf="nom.invalid && (nom.dirty || nom.touched)" class="mat-error">
+          <div *ngIf="nom?.errors.required" style="color: crimson">Le nom est obligatoire</div>
+          <div *ngIf="nom?.errors.minlength"  style="color: crimson">Le nom doit comporter au moins 2 caractères</div>
+          <div *ngIf="nom?.errors.maxlength"  style="color: crimson">Le nom doit comporter au maximum 100 caractères</div>
+        </div>
+      </div>
+      <br />
 
-Pseudo:
-<label for="pseudo" class="p-sr-only">Pseudo</label>
-<input id="pseudo" type="text" pInputText placeholder="Pseudo" formControlName="pseudo">
-<div *ngIf="pseudo.invalid && (pseudo.dirty || pseudo.touched)" class="mat-error">
-<div *ngIf="pseudo?.errors.required" style="color: crimson">Le pseudo est obligatoire</div>
-<div *ngIf="pseudo?.errors.minlength"  style="color: crimson">Le pseudo doit comporter au moins 2 caractères</div>
-<div *ngIf="pseudo?.errors.maxlength"  style="color: crimson">Le pseudo doit comporter au maximum 100 caractères</div>
-</div>
-<br />
+      Pseudo:
+      <div class="p-field">
+        <label for="pseudo" class="p-sr-only">Pseudo</label>
+        <input id="pseudo" type="text" pInputText placeholder="Pseudo" formControlName="pseudo">
+        <div *ngIf="pseudo.invalid && (pseudo.dirty || pseudo.touched)" class="mat-error">
+          <div class="error" *ngIf="pseudo?.errors.required" style="color: crimson">Le pseudo est obligatoire</div>
+          <div class="error" *ngIf="pseudo?.errors.minlength"  style="color: crimson">Le pseudo doit comporter au moins 2 caractères</div>
+          <div class="error" *ngIf="pseudo?.errors.maxlength"  style="color: crimson">Le pseudo doit comporter au maximum 100 caractères</div>
+        </div>
+      </div>
+      <br />
 
-Email:
-<label for="email" class="p-sr-only">Email</label>
-<input id="email" type="text" pInputText placeholder="Email" formControlName="email">
-<div *ngIf="email.invalid && (nom.dirty || nom.touched)" class="mat-error">
-<div *ngIf="email?.errors.required" style="color: crimson">L'email est obligatoire</div>
-<div *ngIf="email?.errors.email" style="color: crimson">La saisie n'est pas un email</div>
-</div>
-<br />
+      Email:
+      <div class="p-field">
+        <label for="email" class="p-sr-only">Email</label>
+        <input id="email" type="text" pInputText placeholder="Email" formControlName="email">
+        <div *ngIf="email.invalid && (nom.dirty || nom.touched)" class="mat-error">
+          <div class="error"*ngIf="email?.errors.required" style="color: crimson">L'email est obligatoire</div>
+          <div class="error"*ngIf="email?.errors.email" style="color: crimson">La saisie n'est pas un email</div>
+        </div>
+      </div>
+      <br />
 
-  <div formGroupName="passwords">
+      Mot de passe:
+      <div class="p-field">
+        <label for="password" class="p-sr-only">Mot de passe</label>
+        <input id="password" type="password" pInputText placeholder="Mot de passe" formControlName="password">
+        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="mat-error">
+          <div class="error"*ngIf="password?.errors.required" style="color: crimson">Le mot de passe est obligatoire</div>
+          <div class="error"*ngIf="password?.errors.minlength"  style="color: crimson">Le mot de passe doit comporter au moins 8 caractères</div>
+          <div class="error"*ngIf="password?.errors.pattern"  style="color: crimson">Le mot de passe doit comporter au moins un chiffre et une majuscule</div>
+        </div>
+      </div>
+      <br />
 
-Mot de passe:
-<label for="password" class="p-sr-only">Mot de passe</label>
-<input id="password" type="password" pInputText placeholder="Mot de passe" formControlName="password">
-<div *ngIf="password.invalid && (password.dirty || password.touched)" class="mat-error">
-<div *ngIf="password?.errors.required" style="color: crimson">Le mot de passe est obligatoire</div>
-<div *ngIf="password?.errors.minlength"  style="color: crimson">Le mot de passe doit comporter au moins 8 caractères</div>
-<div *ngIf="password?.errors.pattern"  style="color: crimson">Le mot de passe doit comporter au moins un chiffre et une majuscule</div>
-</div>
-  <br />
+      Comfirmez le MDP:
+      <div class="p-field">
+        <label for="confirmPassword" class="p-sr-only">Mot de passe</label>
+        <input id="confirmPassword" type="password" pInputText placeholder="Mot de passe" formControlName="confirmPassword">
+        <div *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)" class="mat-error">
+          <div class="error" *ngIf="confirmPassword.invalid" style="color: crimson">Les mots de passe doivent être le même</div>
+        </div>
+      </div>
+      <br />
 
-Comfirmez le mot de passe:
-<label for="confirmPassword" class="p-sr-only">Mot de passe</label>
-<input id="confirmPassword" type="password" pInputText placeholder="Mot de passe" formControlName="confirmPassword">
-<div *ngIf="passwords.invalid && (confirmPassword.dirty || confirmPassword.touched)" class="mat-error">
-<div *ngIf="passwords.invalid" style="color: crimson">Les mots de passe doivent être le même</div>
-</div>
-<br />
 
+      <button pButton type="submit" label="Valider" [disabled]="!formulaire.valid"></button>
+    </form>
   </div>
+</p-card>
 
-<button pButton type="submit" label="Valide" [disabled]="!formulaire.valid">Valider</button>
-  <div class="p-field"></div>
-</form>

@@ -34,8 +34,12 @@ h1{
 
 h2{
   text-align: center;
+  margin-top: -50px;
 }
 
+p-button{
+  cursor:pointer;
+}
 .presentation{
   color: black;
   display : inline-list-item;
@@ -43,10 +47,11 @@ h2{
 }
 
 .img{
-  position : relative;
+  position : absolute;
   background: no-repeat;
-  left: 40%;
-  width: 20%;
+  right: 5%;
+  top: 5%;
+  width: 8%;
   }
 
 @media screen and (max-width: 767px) {
