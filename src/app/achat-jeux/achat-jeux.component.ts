@@ -24,10 +24,6 @@ export class AchatJeuxComponent implements OnInit {
     prix: null
   };
 
-  loading = false;
-  returnUrl: string;
-  error = '';
-
   formulaire = new FormGroup({
     jeu: new FormControl('', Validators.required),
     date: new FormControl('', Validators.required),

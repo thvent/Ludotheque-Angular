@@ -29,6 +29,7 @@ import { AchatJeuxComponent } from './achat-jeux/achat-jeux.component';
 import {JeuService} from './_services/jeu.service';
 import { EnvoieColisComponent } from './envoie-colis/envoie-colis.component';
 import {PanelModule} from 'primeng/panel';
+import { SuppressionAchatComponent } from './suppression-achat/suppression-achat.component';
 import { AfficherCommentairesComponent } from './afficher-commentaires/afficher-commentaires.component';
 import {CardModule} from 'primeng/card';
 import { MeilleursJeuxComponent } from './meilleurs-jeux/meilleurs-jeux.component';
@@ -48,6 +49,7 @@ registerLocaleData(localeFr, 'fr');
     DetailsJeuComponent,
     AchatJeuxComponent,
     EnvoieColisComponent,
+    SuppressionAchatComponent,
     AfficherCommentairesComponent,
     MeilleursJeuxComponent
   ],

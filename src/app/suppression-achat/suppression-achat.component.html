@@ -1,0 +1,11 @@
+Suppression d'un jeu:
+<form [formGroup]="formulaire" (ngSubmit)="onSubmit()">
+  Jeux:
+  <label for="jeu" class="p-sr-only">Jeu</label>
+  <select id="jeu" formControlName="jeu_id">
+    <option *ngFor="let jj of jeux$ | async" [value]="jj.id"> {{ jj.nom }} </option>
+  </select>
+  <br />
+
+  <button pButton type="submit" label="Valide" [disabled]="!formulaire.valid">Valider</button>
+</form>

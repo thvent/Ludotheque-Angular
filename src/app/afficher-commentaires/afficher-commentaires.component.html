@@ -1,7 +1,7 @@
 <div>
   Commentaires:
 <ul>
-<li *ngFor="let commentaire of commentaires$ | async">
+<li *ngFor="let commentaire of (commentaires$ | async)">
   Commentaire:
   {{ commentaire.commentaire }}
   <br />

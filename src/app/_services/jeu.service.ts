@@ -6,7 +6,6 @@ import {environment} from '../../environments/environment';
 import {catchError, map, first, mergeMap, toArray, subscribeOn} from 'rxjs/operators';
 import {Commentaire} from '../_models/Commentaire';
 import {DetailsJeu} from '../_models/details-jeu';
-import {subscribeTo} from 'rxjs/internal-compatibility';
 
 
 @Injectable({
