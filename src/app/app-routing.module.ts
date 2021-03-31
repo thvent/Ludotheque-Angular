@@ -16,7 +16,6 @@ const routes: Routes = [
   {path: 'ajouter-jeux', component: AjouterJeuxComponent},
   {path: 'newaccount', component: NewaccountComponent},
   {path: 'listejeux', component: ListeJeuxComponent},
-  {path: 'envoie-colis', component: EnvoieColisComponent},
   {path: 'listejeux/:id', component: DetailsJeuComponent},
   {path: 'meilleursjeux', component: MeilleursJeuxComponent},
   {path: 'ro', component: LpSolverTestComponent}
