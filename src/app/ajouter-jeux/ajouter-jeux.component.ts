@@ -38,7 +38,7 @@ export class AjouterJeuxComponent implements OnInit {
     editeur: new FormControl('', [Validators.required]),
     dure: new FormControl('', [Validators.required]),
     langue: new FormControl('', [Validators.required]),
-    number: new FormControl('', [Validators.required, Validators.min(2), Validators.max(10)]),
+    number: new FormControl('', [Validators.required, Validators.min(2), Validators.max(8)]),
     poids: new FormControl('', [Validators.required, Validators.min(0.1), Validators.max(5)]),
     age: new FormControl('', [Validators.required, Validators.min(1), Validators.max(16)]),
     categorie: new FormControl('', [Validators.required])
@@ -46,7 +46,6 @@ export class AjouterJeuxComponent implements OnInit {
 
   constructor(private messageService: MessageService, private gameService: AjouterJeuxService, private router: Router,
               private route: ActivatedRoute) { }
-
 
   get nom(): AbstractControl {
     return this.formulaire.get('nom');
@@ -104,6 +103,5 @@ export class AjouterJeuxComponent implements OnInit {
         this.loading = false;
         this.messageService.add({severity: 'error', summary: 'Erreur', detail: this.error, key: 'main'});
         });
-
   }
 }

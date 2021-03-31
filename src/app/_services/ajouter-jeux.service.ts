@@ -38,7 +38,6 @@ export class AjouterJeuxService {
 
   addGame(nom: string, description: string, theme: number, editeur: string, langue: string, age: number, poids: number,
           nombreJoueurs: number, categorie: string, duree: number, regle: string): Observable<any> {
-    console.log(regle);
     return this.http.post<any>(`${environment.apiUrl}/jeux`, {nom, description, theme, editeur, langue, age, poids,
     nombreJoueurs, categorie, duree, regle}, httpOptions)
       .pipe(
