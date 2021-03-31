@@ -15,6 +15,7 @@ export class ListeJeuxComponent implements OnInit {
   jeux$: Observable<Jeu>;
   nbrJoueur: number;
   age: number;
+  listeNbJoueur: Array<number> = new Array<number>();
 
   formulaire = new FormGroup({
     nombreJoueurs: new FormControl('', Validators.required),
