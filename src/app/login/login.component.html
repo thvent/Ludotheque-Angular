@@ -1,5 +1,18 @@
-<form [formGroup]="formulaire" (ngSubmit)="onSubmit()">
-  Email : <input type="text" formControlName="email"><br>
-  Mot de passe : <input type="password" formControlName="password"><br>
-  <button [disabled]="!formulaire.valid">Valide</button>
-</form>
+<p-card>
+  <div class="p-mb-3 p-text-bold" id ="intro">Connectez-vous ici : </div>
+  <hr>
+  <div class="p-fluid">
+      <form [formGroup]="formulaire" (ngSubmit)="onSubmit()">
+        <div class="p-field">
+          <span>Email : </span> <input type="text" formControlName="email">
+    </div>
+    <div class="p-field">
+      <span>Mot de passe : </span><input type="password" formControlName="password">
+      <br>
+        <button [disabled]="!formulaire.valid">Valide</button>
+    </div>
+      </form>
+  </div>
+</p-card>
+
+<img class="img" src="../assets/logo.png"/>

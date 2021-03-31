@@ -15,15 +15,6 @@ export class AppComponent {
   constructor(public messageService: MessageService, public authService: AuthentificationService) {
   }
 
-  show(): void {
-    const now = moment().format('LL');
-    this.messageService.add({
-      key: 'main',
-      severity: 'info',
-      detail: `${this.title}, ${now}`,
-    });
-  }
-
   logout(): void {
     this.authService.logout();
   }
@@ -34,28 +25,28 @@ export class AppComponent {
       if (login) {
         this.items = [{
           label: 'Register',
-          icon : 'pi pi-home',
-          routerLink : '/register',
+          icon : 'pi pi-user-plus',
+          routerLink : '/newaccount',
           routerLinkActiveOptions: {exact: true},
           command: () => {
             this.register();
           }
       },
           {
-          label: 'Login',
-          icon: 'pi pi-home',
-          routerLink: '/login',
-          routerLinkActiveOptions: {exact: true},
-          command: () => {
-            this.login();
-          }
-        },
-          {
-            label: 'Exo RO',
-            icon: 'pi pi-eye',
-            routerLink: '/ro',
+            label: 'Login',
+            icon: 'pi pi-user',
+            routerLink: '/login',
             routerLinkActiveOptions: {exact: true},
-          }];
+            command: () => {
+              this.login();
+            }
+          },
+          {
+            label: 'Liste jeux',
+            icon : 'pi pi-table',
+            routerLink : '/listejeux',
+            routerLinkActiveOptions: {exact: true},
+          }, ];
       } else {
         this.items = [{
             label: 'Exo RO',
@@ -68,7 +59,20 @@ export class AppComponent {
             icon: 'pi pi-user',
             routerLink: '/profile',
             routerLinkActiveOptions: {exact: true}
-          }];
+          },
+          {
+            label: 'Ajout jeu',
+            icon: 'pi pi-list',
+            routerLink: '/ajouter-jeux',
+            routerLinkActiveOptions: {exact: true},
+          },
+          {
+            label: 'Liste jeux',
+            icon: 'pi pi-table',
+            routerLink: '/listejeux',
+            routerLinkActiveOptions: {exact: true},
+          }
+        ];
       }
     });
 }

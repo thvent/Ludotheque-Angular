@@ -30,6 +30,7 @@ import {JeuService} from './_services/jeu.service';
 
 import { EnvoieColisComponent } from './envoie-colis/envoie-colis.component';
 import {PanelModule} from 'primeng/panel';
+import {CardModule} from 'primeng/card';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -58,7 +59,8 @@ registerLocaleData(localeFr, 'fr');
     ReactiveFormsModule,
     MenubarModule,
     ButtonModule,
-    PanelModule
+    PanelModule,
+    CardModule
   ],
   providers: [AuthentificationService, MessageService,
     {provide: LOCALE_ID, useValue: 'fr-FR'},

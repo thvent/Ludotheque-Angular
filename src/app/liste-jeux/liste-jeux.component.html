@@ -1,19 +1,18 @@
-<h1>Liste des jeux</h1>
-
+<h1 class="title">Liste des jeux</h1>
 <div class="container">
   <div class="row">
     <div *ngFor="let jeu of jeux$ | async" class="col s6 m4">
       <div class="card horizontal">
         <div class="card-image">
-          <img [src]="jeu.url_media" style="width: 20px">
+          <img [src]="jeu.url_media" style="width: 40px">
         </div>
         <div class="card-stacked">
           <div class="card-content">
-            <p>Nom du jeu : {{ jeu.nom }}</p>
-            <p>Thème du jeu : {{ jeu.theme_id.nom }}</p>
-            <p>Durée du jeu : {{ jeu.duree }}</p>
-            <p>Nombre de joueur : {{ jeu.nombre_joueurs }}</p>
-            <p>Âge minimum recquis : {{ jeu.age }}</p>
+            <p><span>Nom du jeu :</span>   {{ jeu.nom }}</p>
+            <p><span>Thème du jeu :</span>   {{ jeu.theme_id.nom }}</p>
+            <p><span>Durée du jeu :</span>   {{ jeu.duree }}</p>
+            <p><span>Nombre de joueur :</span>   {{ jeu.nombre_joueurs }}</p>
+            <p><span>Âge minimum recquis :</span>   {{ jeu.age }}</p>
             <button class="accent-1" (click)="jeuSelectionne(jeu)">Détails</button>
             <br>
           </div>
