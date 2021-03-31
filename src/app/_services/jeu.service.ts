@@ -38,4 +38,13 @@ export class JeuService {
         })
       );
   }
+
+  getJeuById(id: number): Observable<Jeu> {
+    console.log('valeur de l\'id = ' + id);
+    return this.http.get<any>(environment.apiUrl + '/jeux/' + id, this.httpOptions)
+      .pipe(
+        map(rep => rep.data.item),
+        catchError(err => throwError(err))
+      );
+  }
 }
