@@ -43,12 +43,10 @@ export class JeuService {
   }
 
   getCommentaires(jeu_id: number): Observable<Observable<Commentaire>> {
-    let t = this.getJeuById(jeu_id).pipe(
+    return this.getJeuById(jeu_id).pipe(
       map(jeu => jeu.commentaires),
       catchError(err => throwError(err))
     );
-    console.log("now");
-    return  t;
   };
 
   getJeuById(id: number): Observable<DetailsJeu> {
@@ -60,4 +58,16 @@ export class JeuService {
         catchError(err => throwError(err))
       );
   }
+
+  deleteJeu(id: number): void {
+    console.log('suppression du jeu ' + id);
+    return this.http.get<any>(environment.apiUrl + '/jeux/' + id, this.httpOptions)
+      .pipe(
+        map(rep => rep.data.item),
+        first(),
+        catchError(err => throwError(err))
+      );
+  }
+
+
 }

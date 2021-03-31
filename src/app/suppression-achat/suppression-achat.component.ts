@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {UserService} from '../_services/user.service';
 
 @Component({
   selector: 'app-suppression-achat',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SuppressionAchatComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService:UserService) { }
 
   ngOnInit(): void {
+    this.userService.getDetailedUser();
+  }
+
+  onSubmit(): void {
+
   }
 
 }
