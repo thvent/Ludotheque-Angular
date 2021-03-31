@@ -3,8 +3,9 @@ import {Observable, of, throwError} from 'rxjs';
 import {Jeu} from '../_models/jeu';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../environments/environment';
-import {catchError, map, first} from 'rxjs/operators';
+import {catchError, map, first, mergeMap, toArray} from 'rxjs/operators';
 import {Commentaire} from '../_models/Commentaire';
+import {DetailsJeu} from '../_models/details-jeu';
 
 
 @Injectable({
@@ -40,17 +41,21 @@ export class JeuService {
       );
   }
 
-  getJeu(jeu_id:number): Observable<any> {
-    return this.http.get<any>(`${environment.apiUrl}/jeux/${jeu_id}`, this.httpOptions)
+  getCommentaires(jeu_id: number): Observable<Commentaire> {
+    return this.getJeuById(jeu_id).pipe(
+      map(jeu => jeu.commentaires),
+      mergeMap(() => true),
+      catchError(err => throwError(err))
+    )
+  };
+
+  getJeuById(id: number): Observable<DetailsJeu> {
+    console.log('valeur de l\'id = ' + id);
+    return this.http.get<any>(environment.apiUrl + '/jeux/' + id, this.httpOptions)
       .pipe(
+        map(rep => rep.data.item),
         first(),
         catchError(err => throwError(err))
       );
   }
-
-  getCommentaires(jeu_id:number): Observable<Commentaire> {
-    return this.getJeu(jeu_id).pipe(
-      map(res => res.data.item.commentaires)
-    )
-  };
 }

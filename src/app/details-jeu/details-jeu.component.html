@@ -1,1 +1,47 @@
-<p>details-jeu works!</p>
+<div *ngIf="(jeux$ | async) as jeu" class="row">
+  <div class="col s12 m8 offset-m2">
+    <h2 class="header center">{{ jeu.nom }}</h2>
+    <div class="card horizontal hoverable">
+      <div class="card-image">
+        <img [src]="jeu.i">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <table class="bordered striped">
+            <tbody>
+            <tr>
+              <td>Id</td>
+              <td><strong>{{ jeu.id }}</strong></td>
+            </tr>
+            <tr>
+              <td>Nom</td>
+              <td><strong>{{ jeu.nom }}</strong></td>
+            </tr>
+            <tr>
+            <tr>
+              <td>Mécaniques</td>
+              <td *ngFor="jeu.theme as meca"><strong>{{ meca }}</strong></td>
+            </tr>
+            <tr>
+              <td>Description</td>
+              <td><span>{{ jeu.description }}</span></td>
+            </tr>
+            <tr>
+              <td>Catégorie</td>
+              <td><strong>{{ jeu.categorie}}</strong></td>
+            </tr>
+            <tr>
+              <td>Regles</td>
+              <td><strong>{{ jeu.regles}}</strong></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-action">
+          <button class="accent-1" (click)="goBack()">Retour</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<h4 *ngIf='!jeux$' class="center">Aucun détail de jeu à afficher !</h4>

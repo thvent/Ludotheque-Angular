@@ -36,7 +36,9 @@ Email:
 <div *ngIf="email?.errors.required" style="color: crimson">L'email est obligatoire</div>
 <div *ngIf="email?.errors.email" style="color: crimson">La saisie n'est pas un email</div>
 </div>
-  <br />
+<br />
+
+  <div formGroupName="passwords">
 
 Mot de passe:
 <label for="password" class="p-sr-only">Mot de passe</label>
@@ -51,11 +53,12 @@ Mot de passe:
 Comfirmez le mot de passe:
 <label for="confirmPassword" class="p-sr-only">Mot de passe</label>
 <input id="confirmPassword" type="password" pInputText placeholder="Mot de passe" formControlName="confirmPassword">
-<div *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)" class="mat-error">
-<div *ngIf="confirmPassword.invalid" style="color: crimson">Les mots de passe doivent être le même</div>
+<div *ngIf="passwords.invalid && (confirmPassword.dirty || confirmPassword.touched)" class="mat-error">
+<div *ngIf="passwords.invalid" style="color: crimson">Les mots de passe doivent être le même</div>
 </div>
 <br />
 
+  </div>
 
 <button pButton type="submit" label="Valide" [disabled]="!formulaire.valid">Valider</button>
   <div class="p-field"></div>

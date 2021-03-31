@@ -9,12 +9,12 @@
         </div>
         <div class="card-stacked">
           <div class="card-content">
-            <p>Nom du jeu : {{ jeu.nom }}</p>
-            <p>Thème du jeu : {{ jeu.theme_id.nom }}</p>
-            <p>Durée du jeu : {{ jeu.duree }}</p>
-            <p>Nombre de joueur : {{ jeu.nombre_joueurs }}</p>
-            <p>Âge minimum recquis : {{ jeu.age }}</p>
-            <button class="accent-1" (click)="jeuSelectionne(jeu)">Détails</button>
+            <p>{{ jeu.nom }}</p>
+            <p>{{ jeu.theme }}</p>
+            <p>{{ jeu.duree }}</p>
+            <p>{{ jeu.nombre_joueurs }}</p>
+            <p>{{ jeu.age }}</p>
+            <button class="accent-1" (click)="jeuSelectionne(jeu)">Plus d'infos</button>
             <br>
           </div>
         </div>
