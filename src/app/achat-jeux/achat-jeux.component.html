@@ -6,21 +6,26 @@
     <option *ngFor="let jeu of (jeux$ | async)" [value]="jeu.id"> {{ jeu.nom }} </option>
   </select>
   <br />
+  <br />
 
   Date d'achat:
   <label for="date" class="p-sr-only">Date</label>
   <input id="date" type="date" pInputText placeholder="Date" formControlName="date">
+  <br />
   <br />
 
   Lieu de stockage:
   <label for="lieu" class="p-sr-only">Lieu</label>
   <input id="lieu" type="text" pInputText placeholder="Lieu" formControlName="lieu">
   <br />
+  <br />
 
   Prix d'achat:
   <label for="prix" class="p-sr-only">Prix</label>
   <input id="prix" type="number" placeholder="Prix" formControlName="prix">
   <br />
+  <br />
 
-  <button pButton type="submit" label="Valide" [disabled]="!formulaire.valid">Valider</button>
+  <button pButton type="submit" label="Valider" [disabled]="!formulaire.valid"></button>
+  <br>
 </form>
