@@ -3,7 +3,10 @@ import {Observable, of, throwError} from 'rxjs';
 import {Jeu} from '../_models/jeu';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../environments/environment';
-import {catchError, map} from 'rxjs/operators';
+import {catchError, map, first, mergeMap, toArray, subscribeOn} from 'rxjs/operators';
+import {Commentaire} from '../_models/Commentaire';
+import {DetailsJeu} from '../_models/details-jeu';
+import {subscribeTo} from 'rxjs/internal-compatibility';
 
 
 @Injectable({
@@ -39,11 +42,21 @@ export class JeuService {
       );
   }
 
-  getJeuById(id: number): Observable<Jeu> {
+  getCommentaires(jeu_id: number): Observable<Observable<Commentaire>> {
+    let t = this.getJeuById(jeu_id).pipe(
+      map(jeu => jeu.commentaires),
+      catchError(err => throwError(err))
+    );
+    console.log("now");
+    return  t;
+  };
+
+  getJeuById(id: number): Observable<DetailsJeu> {
     console.log('valeur de l\'id = ' + id);
     return this.http.get<any>(environment.apiUrl + '/jeux/' + id, this.httpOptions)
       .pipe(
         map(rep => rep.data.item),
+        first(),
         catchError(err => throwError(err))
       );
   }
