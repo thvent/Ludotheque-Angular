@@ -77,6 +77,12 @@ export class AppComponent {
             icon: 'pi pi-table',
             routerLink: '/listejeux',
             routerLinkActiveOptions: {exact: true},
+          },
+          {
+            label : 'Les 5 meilleurs jeux',
+            icon : 'pi pi-star-o',
+            routerLink : '/meilleursjeux',
+            routerLinkActiveOptions: {exact: true},
           }
         ];
       }
