@@ -31,6 +31,7 @@ import {JeuService} from './_services/jeu.service';
 import { EnvoieColisComponent } from './envoie-colis/envoie-colis.component';
 import {PanelModule} from 'primeng/panel';
 import { AfficherCommentairesComponent } from './afficher-commentaires/afficher-commentaires.component';
+import { MeilleursJeuxComponent } from './meilleurs-jeux/meilleurs-jeux.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -46,7 +47,8 @@ registerLocaleData(localeFr, 'fr');
     DetailsJeuComponent,
     AchatJeuxComponent,
     EnvoieColisComponent,
-    AfficherCommentairesComponent
+    AfficherCommentairesComponent,
+    MeilleursJeuxComponent
   ],
   imports: [
     BrowserModule,

@@ -42,14 +42,15 @@ export class JeuService {
       );
   }
 
+  // tslint:disable-next-line:variable-name
   getCommentaires(jeu_id: number): Observable<Observable<Commentaire>> {
-    let t = this.getJeuById(jeu_id).pipe(
+    const t = this.getJeuById(jeu_id).pipe(
       map(jeu => jeu.commentaires),
       catchError(err => throwError(err))
     );
-    console.log("now");
+    console.log('now');
     return  t;
-  };
+  }
 
   getJeuById(id: number): Observable<DetailsJeu> {
     console.log('valeur de l\'id = ' + id);
