@@ -3,7 +3,7 @@
     <h2 class="header center">{{ jeu.nom }}</h2>
     <div class="card horizontal hoverable">
       <div class="card-image">
-        <img [src]="jeu.i">
+        <img [src]="jeu.url_media">
       </div>
       <div class="card-stacked">
         <div class="card-content">
@@ -19,8 +19,8 @@
             </tr>
             <tr>
             <tr>
-              <td>Mécaniques</td>
-              <td *ngFor="jeu.theme as meca"><strong>{{ meca }}</strong></td>
+              <td>Thème</td>
+              <td><span>{{ jeu.theme_id.nom }}</span></td>
             </tr>
             <tr>
               <td>Description</td>
@@ -34,9 +34,42 @@
               <td>Regles</td>
               <td><strong>{{ jeu.regles}}</strong></td>
             </tr>
+            <tr>
+              <td>Langue</td>
+              <td><strong>{{ jeu.langue}}</strong></td>
+            </tr>
+            <tr>
+              <td>Age minimum</td>
+              <td><strong>{{ jeu.age }} ans</strong></td>
+            </tr>
+            <tr>
+              <td>Nombre de joueurs</td>
+              <td><strong>{{ jeu.nombre_joueurs }} joueurs</strong></td>
+            </tr>
+            <tr>
+              <td>Poids</td>
+              <td><strong>{{ jeu.poids }} kg</strong></td>
+            </tr>
+            <tr>
+              <td>Durée</td>
+              <td><strong>{{ jeu.duree }}</strong></td>
+            </tr>
+            <tr>
+              <td>Editeur</td>
+              <td><strong>{{ jeu.editeur_id.nom }}</strong></td>
+            </tr>
+            <!--<tr>
+              <td>Editeur</td>
+              <td>
+                <div *ngFor="let unEditeur of jeu.editeur_id.nom">
+                  <strong>{{ unEditeur }}</strong>
+                </div>
+              </td>
+            </tr>-->
             </tbody>
           </table>
         </div>
+        <app-afficher-commentaires [jeux$]="jeux$"></app-afficher-commentaires>
         <div class="card-action">
           <button class="accent-1" (click)="goBack()">Retour</button>
         </div>

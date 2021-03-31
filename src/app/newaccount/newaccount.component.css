@@ -1,0 +1,45 @@
+p-card{
+  display : flex;
+  position : absolute;
+  right: 45%;
+  left: 45%;
+  top : 20%;
+}
+
+.p-field{
+  margin-bottom : -10px;
+  padding-bottom : 2px;
+}
+
+#intro{
+  text-align: center;
+}
+
+input{
+  display : flex;
+}
+
+button{
+  position: relative;
+  display: flex;
+  padding: 7px 10px;
+  margin-bottom : -10px;
+  background-color: #1976d2;
+  border-radius: 15%;
+  border : #1976d2 2px solid;
+  cursor: pointer;
+  color: white;
+}
+
+.img{
+  position : fixed;
+  background: no-repeat;
+  right: 41%;
+  left: 41%;
+  top: 60%;
+  width: 20%;
+}
+
+.error{
+  padding-top: 5px;
+}

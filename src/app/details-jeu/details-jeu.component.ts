@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Jeu} from '../_models/jeu';
+import {DetailsJeu} from '../_models/details-jeu';
 import {JeuService} from '../_services/jeu.service';
-import {noop, Observable, of} from 'rxjs';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-details-jeu',
@@ -10,12 +10,11 @@ import {noop, Observable, of} from 'rxjs';
   styleUrls: ['./details-jeu.component.css']
 })
 export class DetailsJeuComponent implements OnInit {
-  jeux$: Observable<Jeu>;
+  jeux$: Observable<DetailsJeu>;
   id: number;
 
-  private service: JeuService;
 
-  constructor(private route: ActivatedRoute, private router: Router, service: JeuService) {
+  constructor(private route: ActivatedRoute, private router: Router, private service: JeuService) {
     this.service = service;
   }
 

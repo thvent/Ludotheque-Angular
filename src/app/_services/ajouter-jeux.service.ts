@@ -12,9 +12,10 @@ const httpOptions = {
 
 export const ANONYMOUS_GAME: Jeu = {
   id: 0,
-  nom: '',  description: '',
-  theme: 1,
-  editeur: 2,
+  nom: '',
+  description: '',
+  theme_id: 1,
+  editeur_id: 2,
   langue: '',
   age: 6,
   nombre_joueurs: 2,

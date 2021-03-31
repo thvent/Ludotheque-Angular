@@ -27,11 +27,12 @@ import {MenubarModule} from 'primeng/menubar';
 import {ButtonModule} from 'primeng/button';
 import { AchatJeuxComponent } from './achat-jeux/achat-jeux.component';
 import {JeuService} from './_services/jeu.service';
-
 import { EnvoieColisComponent } from './envoie-colis/envoie-colis.component';
 import {PanelModule} from 'primeng/panel';
 import { SuppressionAchatComponent } from './suppression-achat/suppression-achat.component';
 import { AfficherCommentairesComponent } from './afficher-commentaires/afficher-commentaires.component';
+import {CardModule} from 'primeng/card';
+
 
 registerLocaleData(localeFr, 'fr');
 
@@ -62,7 +63,8 @@ registerLocaleData(localeFr, 'fr');
     ReactiveFormsModule,
     MenubarModule,
     ButtonModule,
-    PanelModule
+    PanelModule,
+    CardModule
   ],
   providers: [AuthentificationService, MessageService,
     {provide: LOCALE_ID, useValue: 'fr-FR'},

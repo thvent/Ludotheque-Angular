@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {JeuService} from '../_services/jeu.service';
+import {Component, Input, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Commentaire} from '../_models/Commentaire';
-
+import {DetailsJeu} from '../_models/details-jeu';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-afficher-commentaires',
@@ -11,13 +11,15 @@ import {Commentaire} from '../_models/Commentaire';
 })
 export class AfficherCommentairesComponent implements OnInit {
 
+  @Input() jeux$: Observable<DetailsJeu>;
   commentaires$: Observable<Observable<Commentaire>>;
 
-  constructor(private jeuService: JeuService) { }
+  constructor() {}
 
   ngOnInit(): void {
-    this.commentaires$ = this.jeuService.getCommentaires(1);
-    console.log("or m")
+    this.commentaires$ = this.jeux$.pipe(
+      map(jeu => jeu.commentaires)
+    );
   }
 
 }

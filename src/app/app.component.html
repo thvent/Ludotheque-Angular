@@ -1,13 +1,4 @@
 <body>
-<ul>
-  <li *ngIf="authService.isLoggedOut$ | async"><a [routerLink]="['/login']">Login</a></li>
-  <li *ngIf="authService.isLoggedOut$ | async"><a [routerLink]="['/newaccount']">New Account</a></li>
-  <li *ngIf="authService.isLoggedIn$ | async"><a [routerLink]="['/profile']">Profile</a></li>
-  <li *ngIf="authService.isLoggedIn$ | async"><a [routerLink]="['/ajouter-jeux']">Ajouter Jeux</a></li>
-  <li><a [routerLink]="['/listejeux']">Liste jeux</a></li>
-  <li *ngIf="authService.isLoggedIn$ | async"><button (click)="logout()">logout</button></li>
-  <li><a [routerLink]="['/ro']">Exo RO</a></li>
-</ul>
 <div>
   <p-menubar [model]="items">
     <div *ngIf="authService.isLoggedIn$ | async"><p-button (click)="logout()" label="Logout"icon="pi pi-power-off"></p-button></div>
@@ -15,9 +6,8 @@
 </div>
 
 <div class="presentation">
-  <h1>Bienvenue sur notre Ludothèque !</h1>
+  <h1 style="background-color: lightgray;">Bienvenue sur notre Ludothèque !</h1>
   <img class="img" src="../assets/logo.png"/>
-  <h2>Inscrivez-vous ou connectez-vous pour continuer.</h2>
 </div>
 
 <router-outlet></router-outlet>
