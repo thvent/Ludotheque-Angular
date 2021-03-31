@@ -13,7 +13,7 @@
             <p>Thème du jeu : {{ jeu.theme_id.nom }}</p>
             <p>Durée du jeu : {{ jeu.duree }}</p>
             <p>Nombre de joueur : {{ jeu.nombre_joueurs }}</p>
-            <p>Âge minimum recquis : {{ jeu.age }}</p>
+            <p>Âge minimum requis : {{ jeu.age }}</p>
             <button class="accent-1" (click)="jeuSelectionne(jeu)">Détails</button>
             <br>
           </div>
@@ -22,7 +22,7 @@
     </div>
   </div>
 </div>
-<hr>
+
 <h1>Filtrage</h1>
 <form [formGroup]="formulaire" (ngSubmit)="onSubmit()">
   Nombre de joueur :
@@ -49,7 +49,42 @@
               <p>Thème du jeu : {{ jeu.theme_id.nom }}</p>
               <p>Durée du jeu : {{ jeu.duree }}</p>
               <p>Nombre de joueur : {{ jeu.nombre_joueurs }}</p>
-              <p>Âge minimum recquis : {{ jeu.age }}</p>
+              <p>Âge minimum requis : {{ jeu.age }}</p>
+              <button class="accent-1" (click)="jeuSelectionne(jeu)">Détails</button>
+              <br>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>
+
+<form [formGroup]="formulaire2" (ngSubmit)="onSubmit2()">
+  Âge minimum requis :
+  <label for="jeu" class="p-sr-only">Jeu</label>
+  <select id="jeu2" formControlName="age">
+    <option *ngFor="let j of (jeux$ | async)" [value]="j.age"> {{j.age}} </option>
+  </select>
+  <br/>
+  <button pButton class="accent-1" type="submit" label="Filtrer" [disabled]="!formulaire2.valid" (click)="showDiv2()">Filtrer</button>
+</form>
+<div id ="filtre2" class="container" style="display:none">
+  <div class="row">
+    <div *ngFor="let jeu of jeux$ | async" class="col s6 m4">
+      <div *ngIf="jeu.age <= age;then contenu"></div>
+      <ng-template #contenu>
+        <div class="card horizontal">
+          <div class="card-image">
+            <img [src]="jeu.url_media" style="width: 20px">
+          </div>
+          <div class="card-stacked">
+            <div class="card-content">
+              <p>Nom du jeu : {{ jeu.nom }}</p>
+              <p>Thème du jeu : {{ jeu.theme_id.nom }}</p>
+              <p>Durée du jeu : {{ jeu.duree }}</p>
+              <p>Nombre de joueur : {{ jeu.nombre_joueurs }}</p>
+              <p>Âge minimum requis : {{ jeu.age }}</p>
               <button class="accent-1" (click)="jeuSelectionne(jeu)">Détails</button>
               <br>
             </div>

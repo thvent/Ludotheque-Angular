@@ -13,8 +13,8 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class ListeJeuxComponent implements OnInit {
   jeux$: Observable<Jeu>;
-  jeuxFiltre$: Observable<Jeu>;
   nbrJoueur: number;
+  age: number;
 
   formulaire = new FormGroup({
     nombreJoueurs: new FormControl('', Validators.required),
@@ -22,6 +22,14 @@ export class ListeJeuxComponent implements OnInit {
 
   form: any = {
     nombreJoueurs: null,
+  };
+
+  formulaire2 = new FormGroup({
+    age: new FormControl('', Validators.required),
+  });
+
+  form2: any = {
+    age: null,
   };
 
   loading = false;
@@ -49,9 +57,20 @@ export class ListeJeuxComponent implements OnInit {
     this.nbrJoueur = this.form.nombreJoueurs;
   }
 
+  onSubmit2(): void {
+    this.form2 = {
+      ...this.form2, ...this.formulaire2.value,
+    };
+    console.log(this.form2.age);
+    this.age = this.form2.age;
+  }
+
   showDiv(): void {
     document.getElementById('filtre').style.display = 'block';
-    console.log('ok');
+  }
+
+  showDiv2(): void {
+    document.getElementById('filtre2').style.display = 'block';
   }
 
   jeuSelectionne(jeu: Jeu): void {
