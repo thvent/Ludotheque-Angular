@@ -1,6 +1,8 @@
 <h1 class="title">Liste des jeux</h1>
 <div class="container">
   <div class="row">
+    <button class="accent-1" (click)="jeux$ = this.service.getJeuxSortByNote()">Trier par note</button>
+    <button class="accent-1" (click)="jeux$ = this.service.getJeuxSortByNom()">Trier par nom</button>
     <div *ngFor="let jeu of jeux$ | async" class="col s6 m4">
       <div class="card horizontal">
         <div class="card-image">

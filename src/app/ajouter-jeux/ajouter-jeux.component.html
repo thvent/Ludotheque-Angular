@@ -1,32 +1,47 @@
+<p-card>
+<div class="principal">
 <form [formGroup]="formulaire" (ngSubmit)="onSubmit()">
-  Nom : <input type="text" formControlName="nom">
-  <div *ngIf="nom.invalid && nom.touched" class="p-card">
-    <p class="p-card-content">Le nom du jeux est requis<p>
+  <div class="nom">
+    Nom : <input type="text" formControlName="nom">
+    <div *ngIf="nom.invalid && nom.touched" class="p-card">
+      <p class="p-card-content">Le nom du jeux est requis<p>
+    </div>
   </div>
-  <br>
 
-  Description : <textarea formControlName="description"></textarea>
-  <div *ngIf="description.invalid && description.touched" class="p-card">
-    <p class="p-card-content">La description du jeux est requis<p>
-  </div><br>
+  <div class="description">
+    Description : <textarea formControlName="description"></textarea>
+    <div *ngIf="description.invalid && description.touched" class="p-card">
+      <p class="p-card-content">La description du jeux est requis<p>
+    </div>
+  </div>
 
+  <div class="regles">
   Règles : <textarea formControlName="regles"></textarea>
   <div *ngIf="regles.invalid && regles.touched" class="p-card">
     <p class="p-card-content">Les règles du jeux est requis<p>
-  </div><br>
+  </div>
+  </div>
+
+  <div class="image">
   Images URL : <input type="text" formControlName="image">
   <div *ngIf="themes.invalid && themes.touched" class="p-card">
     <p class="p-card-content">Une image est requise<p>
-  </div><br>
+  </div>
+  </div>
+
+  <div class="theme">
   Thème : <input type="number" formControlName="themes">
   <div *ngIf="themes.invalid && themes.touched" class="p-card">
     <p class="p-card-content">Les thèmes du jeux sont requis<p>
-  </div><br>
-  Editeur : <input type="number" formControlName="editeur">
-  <div *ngIf="editeur.invalid && editeur.touched" class="p-card">
-    <p class="p-card-content">L'éditeur du jeux est requis<p>
-  </div><br>
-
+  </div>
+  </div>
+  <div class="editeur">
+    Editeur : <input type="number" formControlName="editeur">
+    <div *ngIf="editeur.invalid && editeur.touched" class="p-card">
+      <p class="p-card-content">L'éditeur du jeux est requis<p>
+    </div>
+  </div>
+  <div class="duree">
   Durée :
   <select name="dure" id="dure" formControlName="dure">
     <option value="- de 10 Minute">- de 10 Minute</option>
@@ -37,23 +52,33 @@
   </select>
   <div *ngIf="dure.invalid && dure.touched" class="p-card">
     <p class="p-card-content">Veuillez sélectionner une durée<p>
-  </div><br>
+  </div>
+  </div>
 
+  <div class="langue">
   Langue : <input type="text" formControlName="langue">
   <div *ngIf="langue.invalid && langue.touched" class="p-card">
     <p class="p-card-content">Le langue du jeux est requise<p>
   </div><br>
 
+  Nombre de joueurs (entre 2 et 8) : <input type="number" formControlName="number">
+  </div>
+
+  <div class="joueur">
   Nombre de joueurs (entre 2 et 10) : <input type="number" formControlName="number">
   <div *ngIf="number.invalid && number.touched" class="p-card">
     <p class="p-card-content">Le nombre de joueur n'est pas renseignée ou incorrect<p>
-  </div><br>
+  </div>
+  </div>
 
+  <div class="poids">
   Poids (entre 0.1 et 5) : <input type="number" formControlName="poids">
   <div *ngIf="poids.invalid && poids.touched" class="p-card">
     <p class="p-card-content">Le poids du jeux est requis (entre 0.1 et 5)<p>
-  </div><br>
+  </div>
+  </div>
 
+  <div class="age">
   Age :
   <select name="age" id="age" formControlName="age">
   <option value="4">4</option>
@@ -64,8 +89,10 @@
 </select>
   <div *ngIf="age.invalid && age.touched" class="p-card">
     <p class="p-card-content">L'âge minimum du jeux est requis<p>
-  </div><br>
+  </div>
+  </div>
 
+  <div class="categorie">
   Catégorie :
   <select name="categorie" id="categorie" formControlName="categorie">
     <option value="Cartes à  jouer">Cartes à  jouer</option>
@@ -82,7 +109,10 @@
   </select>
   <div *ngIf="categorie.invalid && categorie.touched" class="p-card">
     <p class="p-card-content">La catégorie du jeux est requise<p>
-  </div><br>
+  </div>
+  </div>
 
-  <button [disabled]="!formulaire.valid">Valide</button>
+  <p-button [disabled]="!formulaire.valid">Valider</p-button>
 </form>
+</div>
+</p-card>

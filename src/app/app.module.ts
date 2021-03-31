@@ -32,6 +32,7 @@ import {PanelModule} from 'primeng/panel';
 import { SuppressionAchatComponent } from './suppression-achat/suppression-achat.component';
 import { AfficherCommentairesComponent } from './afficher-commentaires/afficher-commentaires.component';
 import {CardModule} from 'primeng/card';
+import { MeilleursJeuxComponent } from './meilleurs-jeux/meilleurs-jeux.component';
 
 
 registerLocaleData(localeFr, 'fr');
@@ -49,7 +50,8 @@ registerLocaleData(localeFr, 'fr');
     AchatJeuxComponent,
     EnvoieColisComponent,
     SuppressionAchatComponent,
-    AfficherCommentairesComponent
+    AfficherCommentairesComponent,
+    MeilleursJeuxComponent
   ],
   imports: [
     BrowserModule,

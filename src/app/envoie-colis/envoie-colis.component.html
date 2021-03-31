@@ -6,11 +6,11 @@
       Nom : {{jeux.jeu.nom}}
     </ng-template>
     Description : {{jeux.jeu.description}}<br>
-    Thèmes : {{jeux.jeu.theme}}<br>
+    Thèmes : {{jeux.jeu.theme_id}}<br>
     Catégorie : {{jeux.jeu.categorie}}<br>
     Age : {{jeux.jeu.age}}<br>
     Durée : {{jeux.jeu.duree}}<br>
-    Nombre de joueurs : {{jeux.jeu.nombreJoueurs}}<br>
+    Nombre de joueurs : {{jeux.jeu.nombre_joueurs}}<br>
     Poids : {{jeux.jeu.poids}}<br>
     <ng-template pTemplate="footer">
       {{jeux.lieu}}<br>
@@ -25,9 +25,12 @@
   <p>Poids maximale en envoie sécurisé : 50</p>
   <p>Poids Actuelle : {{poidsActuelle}}</p>
   <p>Poids Totale : {{poidsTotal}}</p>
-<button (click)="display()">Transmettre</button>
+<button checked (click)="display()">Transmettre</button>
 
-  <p>Liste de Jeux à transmettre : {{montrer}}</p>
+  <p>Liste de Jeux à transmettre : {{disp}}</p>
+
+  <p>Liste de jeux à transmettre de manière sécurisé : {{affichage}}</p>
+  <p>Poids total du colis : {{poidsColis}}</p>
 </form>
 
 

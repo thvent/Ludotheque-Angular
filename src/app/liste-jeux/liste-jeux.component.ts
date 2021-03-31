@@ -15,6 +15,7 @@ export class ListeJeuxComponent implements OnInit {
   jeux$: Observable<Jeu>;
   nbrJoueur: number;
   age: number;
+  listeNbJoueur: Array<number> = new Array<number>();
 
   formulaire = new FormGroup({
     nombreJoueurs: new FormControl('', Validators.required),
@@ -36,15 +37,11 @@ export class ListeJeuxComponent implements OnInit {
   returnUrl: string;
   error = '';
 
-  constructor(private router: Router, private messageService: MessageService, private route: ActivatedRoute, private service: JeuService) {
+  constructor(private router: Router, private messageService: MessageService, private route: ActivatedRoute, public service: JeuService) {
   }
 
   ngOnInit(): void {
-    const lesJeux = [];
-    this.service.getJeux().subscribe(
-      str => lesJeux.push(str), noop, () => this.jeux$ = of(lesJeux[0])
-    );
-    console.log(lesJeux);
+    this.jeux$ = this.service.getJeux();
   }
 
   getNbrJoueurs(): number{

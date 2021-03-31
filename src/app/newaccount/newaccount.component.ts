@@ -40,7 +40,7 @@ export class NewaccountComponent implements OnInit {
   }
 
   checkPasswords(group: FormGroup) {
-    return group.get('password').value != group.get('confirmPassword').value ? { invalid: true } : null;
+    return group.get('password').value !== group.get('confirmPassword').value ? { invalid: true } : null;
   }
   
   	get nom(): AbstractControl {
@@ -72,8 +72,8 @@ export class NewaccountComponent implements OnInit {
 	}
     
     onSubmit(): void {
-		this.form = {...this.form, ...this.formulaire.value};
-		this.authService.register(this.form.prenom, this.form.nom, this.form.pseudo, this.form.email, this.form.passwords.password);
+		  this.form = {...this.form, ...this.formulaire.value};
+		  this.authService.register(this.form.prenom, this.form.nom, this.form.pseudo, this.form.email, this.form.passwords.password);
   }
 
 }

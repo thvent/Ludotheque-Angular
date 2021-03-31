@@ -41,12 +41,13 @@ export class JeuService {
       );
   }
 
+  // tslint:disable-next-line:variable-name
   getCommentaires(jeu_id: number): Observable<Observable<Commentaire>> {
     return this.getJeuById(jeu_id).pipe(
       map(jeu => jeu.commentaires),
       catchError(err => throwError(err))
     );
-  };
+  }
 
   getJeuById(id: number): Observable<DetailsJeu> {
     console.log('valeur de l\'id = ' + id);
@@ -58,5 +59,19 @@ export class JeuService {
       );
   }
 
+  getJeuxSortByNote(): Observable<Jeu> {
+    return this.http.get<any>(environment.apiUrl + '/jeux?sort=note', this.httpOptions)
+      .pipe(
+        map(rep => rep.data.item),
+        catchError(err => throwError(err))
+      );
+  }
 
+  getJeuxSortByNom(): Observable<Jeu> {
+    return this.http.get<any>(environment.apiUrl + '/jeux?sort=nom', this.httpOptions)
+      .pipe(
+        map(rep => rep.data.item),
+        catchError(err => throwError(err))
+      );
+  }
 }

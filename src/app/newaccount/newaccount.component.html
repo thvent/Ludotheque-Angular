@@ -51,6 +51,8 @@
       </div>
       <br />
 
+      <div formGroupName="passwords">
+
       Mot de passe:
       <div class="p-field">
         <label for="password" class="p-sr-only">Mot de passe</label>
@@ -67,12 +69,12 @@
       <div class="p-field">
         <label for="confirmPassword" class="p-sr-only">Mot de passe</label>
         <input id="confirmPassword" type="password" pInputText placeholder="Mot de passe" formControlName="confirmPassword">
-        <div *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)" class="mat-error">
-          <div class="error" *ngIf="confirmPassword.invalid" style="color: crimson">Les mots de passe doivent être le même</div>
+        <div *ngIf="passwords.invalid && (passwords.dirty || passwords.touched)" class="mat-error">
+          <div class="error" *ngIf="passwords.invalid" style="color: crimson">Les mots de passe doivent être le même</div>
         </div>
       </div>
       <br />
-
+      </div>
 
       <button pButton type="submit" label="Valider" [disabled]="!formulaire.valid"></button>
     </form>
