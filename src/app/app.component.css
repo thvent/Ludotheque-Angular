@@ -49,9 +49,9 @@ p-button{
 .img{
   position : absolute;
   background: no-repeat;
-  right: 5%;
-  top: 5%;
-  width: 8%;
+  right: 8%;
+  top: 8%;
+  width: 15%;
   }
 
 @media screen and (max-width: 767px) {

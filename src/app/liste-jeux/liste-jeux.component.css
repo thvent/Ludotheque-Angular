@@ -61,3 +61,6 @@ form{
   margin: 10%;
 }
 
+body{
+  overflow-y: hidden;
+}
