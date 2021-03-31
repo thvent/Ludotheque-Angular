@@ -61,4 +61,12 @@ export class JeuService {
         catchError(err => throwError(err))
       );
   }
+
+  getJeuxSortByNote(): Observable<Jeu> {
+    return this.http.get<any>(environment.apiUrl + '/jeux?sort=note', this.httpOptions)
+      .pipe(
+        map(rep => rep.data.item),
+        catchError(err => throwError(err))
+      );
+  }
 }

@@ -5,6 +5,7 @@
   <li *ngIf="authService.isLoggedIn$ | async"><a [routerLink]="['/profile']">Profile</a></li>
   <li *ngIf="authService.isLoggedIn$ | async"><a [routerLink]="['/ajouter-jeux']">Ajouter Jeux</a></li>
   <li><a [routerLink]="['/listejeux']">Liste jeux</a></li>
+  <li><a [routerLink]="['/meilleursjeux']">Les 5 meilleurs jeux</a></li>
   <li *ngIf="authService.isLoggedIn$ | async"><button (click)="logout()">logout</button></li>
   <li><a [routerLink]="['/ro']">Exo RO</a></li>
 </ul>
