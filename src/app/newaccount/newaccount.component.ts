@@ -26,9 +26,11 @@ export class NewaccountComponent implements OnInit {
     prenom: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
     pseudo: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern('^(?=.*[A-Z])(?=.*[0-9]).*$')]),
-    confirmPassword: new FormControl('')
-  }, this.checkPasswords);
+    passwords: new FormGroup({
+        password: new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern('^(?=.*[A-Z])(?=.*[0-9]).*$')]),
+        confirmPassword: new FormControl('')
+      }, this.checkPasswords),
+  });
 
     constructor(private messageService: MessageService, private authService: AuthentificationService, private router: Router,
               private route: ActivatedRoute) {
@@ -37,11 +39,8 @@ export class NewaccountComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  checkPasswords(group: FormGroup) { // here we have the 'passwords' group
-    const password = group.get('password').value;
-    const confirmPassword = group.get('confirmPassword').value;
-
-    return password !== confirmPassword ? { invalid: true } : null;
+  checkPasswords(group: FormGroup) {
+    return group.get('password').value != group.get('confirmPassword').value ? { invalid: true } : null;
   }
   
   	get nom(): AbstractControl {
@@ -59,18 +58,22 @@ export class NewaccountComponent implements OnInit {
     get email(): AbstractControl {
         return this.formulaire.get('email');
     }
+
+    get passwords(): AbstractControl {
+      return this.formulaire.get('passwords');
+    }
     
     get password(): AbstractControl {
-		return this.formulaire.get('password');
+		return this.formulaire.get('passwords').get('password');
 	}
 	
 	get confirmPassword(): AbstractControl {
-		return this.formulaire.get('confirmPassword');
+		return this.formulaire.get('passwords').get('confirmPassword');
 	}
     
     onSubmit(): void {
 		this.form = {...this.form, ...this.formulaire.value};
-		this.authService.register(this.form.prenom, this.form.nom, this.form.pseudo, this.form.email, this.form.password);
+		this.authService.register(this.form.prenom, this.form.nom, this.form.pseudo, this.form.email, this.form.passwords.password);
   }
 
 }
